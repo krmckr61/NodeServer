@@ -51,7 +51,6 @@ Listener.prototype.initSockets = function () {
             });
 
             socket.on('getHistoryChat', (id) => {
-                console.log("History Chat ID : " + id);
                 ServerSocketListener.getHistoryChat(id, socket);
             });
 

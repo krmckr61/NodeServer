@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="" />
+    <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Model/Visit.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Model/Visit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socket/Listener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Listener.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socket/Server/SocketListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/SocketListener.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,30 +15,48 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+            <state relative-caret-position="18">
+              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Listener.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Listener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="46" column="15" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+            <state relative-caret-position="222">
+              <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="116" column="19" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+            <state relative-caret-position="304">
+              <caret line="127" column="21" lean-forward="true" selection-start-line="127" selection-start-column="21" selection-end-line="127" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Visit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="184" column="33" lean-forward="true" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="84" column="78" lean-forward="true" selection-start-line="84" selection-start-column="78" selection-end-line="84" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -41,7 +64,7 @@
       <file leaf-file-name="Client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/Model/Client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
+            <state relative-caret-position="4122">
               <caret line="229" selection-start-line="229" selection-end-line="229" />
             </state>
           </provider>
@@ -58,7 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>trigg</find>
       <find>console.log('444');</find>
       <find>conso</find>
       <find>444</find>
@@ -88,6 +110,7 @@
       <find>console.log</find>
       <find>consol</find>
       <find>console.lo</find>
+      <find>cli.</find>
     </findStrings>
     <replaceStrings>
       <replace>login</replace>
@@ -97,13 +120,16 @@
       <replace>ClientSocketListener</replace>
       <replace>SocketListener</replace>
       <replace>'2018-02-23 00:00'</replace>
-      <replace>ClientModel.</replace>
       <replace>MessageModel.</replace>
       <replace>let</replace>
+      <replace>ClientModel.</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\NodeServer\node_modules\after</dir>
     </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -150,7 +176,6 @@
         <option value="$PROJECT_DIR$/Helpers/Helper.js" />
         <option value="$PROJECT_DIR$/Modules/Model/UserOnlineTime.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
         <option value="$PROJECT_DIR$/Modules/Model/BannedUser.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Client.js" />
         <option value="$PROJECT_DIR$/Helpers/ClientInfo.js" />
@@ -162,8 +187,9 @@
         <option value="$PROJECT_DIR$/Modules/Model/User.js" />
         <option value="$PROJECT_DIR$/Modules/Controllers/VisitController.js" />
         <option value="$PROJECT_DIR$/Socket/Client/SocketListener.js" />
-        <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
         <option value="$PROJECT_DIR$/Socket/Listener.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
       </list>
     </option>
   </component>
@@ -218,7 +244,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,15 +251,11 @@
               <item name="NodeServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="NodeServer" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="NodeServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NodeServer" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Modules" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -438,45 +459,69 @@
       <workItem from="1523739505232" duration="721000" />
       <workItem from="1523960471324" duration="2329000" />
     </task>
+    <task id="LOCAL-00001" summary="-add a log for disconnecting">
+      <created>1524057348073</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1524057348073</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="550953000" />
+    <option name="totallyTimeSpent" value="553303000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1213" height="999" extended-state="6" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30527496" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30477223" />
       <window_info anchor="right" id="Remote Host" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23000824" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23519646" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958494" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Designer" order="3" />
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30527496" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" x="91" y="91" width="1738" height="848" id="Documentation" order="10" type="FLOATING" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23000824" />
       <window_info id="npm" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Remote Host" order="9" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24958494" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="3" />
@@ -516,6 +561,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-add a log for disconnecting" />
+    <option name="LAST_COMMIT_MESSAGE" value="-add a log for disconnecting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -706,13 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Helpers/ClientInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
@@ -745,13 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2745">
-          <caret line="183" column="20" selection-start-line="183" selection-start-column="20" selection-end-line="183" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -790,31 +825,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modules/Model/Client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="4122">
           <caret line="229" selection-start-line="229" selection-end-line="229" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="116" column="19" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+        <state relative-caret-position="18">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="84" column="78" lean-forward="true" selection-start-line="84" selection-start-column="78" selection-end-line="84" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="46" column="15" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+        <state relative-caret-position="222">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="184" column="33" lean-forward="true" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="127" column="21" lean-forward="true" selection-start-line="127" selection-start-column="21" selection-end-line="127" selection-end-column="21" />
         </state>
       </provider>
     </entry>

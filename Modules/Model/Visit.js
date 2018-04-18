@@ -170,4 +170,28 @@ Visit.prototype.getUserCount = async function (visitId) {
     })
 };
 
+Visit.prototype.getUsersFromVisit = async function (visitId) {
+    return new Promise((resolve) => {
+        db.query({
+            text: "SELECT users.id, users.name from visit INNER JOIN visituser ON visit.id=visituser.visitid INNER JOIN users ON visituser.userid=users.id WHERE visit.id=$1",
+            values: [visitId]
+        }, (err, response) => {
+            if(!err) {
+                if(response.rows.length > 0) {
+                    let arr = {};
+                    for(let key in response.rows) {
+                        arr[response.rows[key].id] = response.rows[key].name;
+                    }
+                    resolve(arr);
+                } else {
+                    resolve(false);
+                }
+            } else {
+                console.log(err);
+                resolve(false);
+            }
+        });
+    });
+};
+
 module.exports = new Visit();

@@ -1,7 +1,7 @@
 let Trigger = require('./Trigger');
 let Server = require('../../Modules/Controllers/ServerController');
 let Client = require('../../Modules/Controllers/ClientController');
-let cli = require('../../Modules/Model/Client');
+let ClientModel = require('../../Modules/Model/Client');
 let srv = require('../../Modules/Model/Server');
 let UserModel = require('../../Modules/Model/User');
 let MessageModel = require('../../Modules/Model/Message');
@@ -79,7 +79,7 @@ SocketListener.prototype.sendPrivateMessage = function (userId, clientId, messag
 };
 
 SocketListener.prototype.destroyChat = function (visitId, socket, io) {
-    cli.getClientIdFromVisitId(visitId).then((clientId) => {
+    ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
         if (clientId) {
             let client = Client.get(clientId);
             if (client) {
@@ -106,7 +106,7 @@ SocketListener.prototype.readMessages = function (id) {
 };
 
 SocketListener.prototype.getHistory = function (dates, socket) {
-    cli.getHistory(dates).then((rows) => {
+    ClientModel.getHistory(dates).then((rows) => {
         if (rows.length > 0) {
             Trigger.setHistory(rows, socket);
         }
@@ -114,24 +114,33 @@ SocketListener.prototype.getHistory = function (dates, socket) {
 };
 
 SocketListener.prototype.getHistoryChat = function (id, socket) {
-    cli.getHistoryVisit(id).then((visit) => {
+    ClientModel.getHistoryVisit(id).then((visit) => {
         if (visit) {
-            socket.emit('takeHistoryChat', visit);
-            MessageModel.getHistoryMessages(id).then((rows) => {
-                socket.emit('loadHistoryChatMessages', {visitid: id, messages: rows});
-            });
+            VisitModel.getUsersFromVisit(id).then((users) => {
+                visit.users = users;
 
-            cli.getClientIdFromVisitId(id).then((clientId) => {
-                VisitModel.getRecentVisits(clientId, visit.id).then((recentVisits) => {
-                    socket.emit('loadRecentVisits', {visitId: visit.id, recentVisits: recentVisits});
-                    for (let i = 0; i < recentVisits.length; i++) {
-                        MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
-                            socket.emit('loadRecentVisitMessages', {
-                                recentVisitId: recentVisits[i]['id'],
-                                messages: recentMessages
-                            });
-                        });
+                socket.emit('takeHistoryChat', visit);
+                MessageModel.getHistoryMessages(id).then((rows) => {
+                    for(let row in rows) {
+                        if(rows[row].userid) {
+                            rows[row].username = visit.users[rows[row].userid];
+                        }
                     }
+                    socket.emit('loadHistoryChatMessages', {visitid: id, messages: rows});
+                });
+
+                ClientModel.getClientIdFromVisitId(id).then((clientId) => {
+                    VisitModel.getRecentVisits(clientId, visit.id).then((recentVisits) => {
+                        socket.emit('loadRecentVisits', {visitId: visit.id, recentVisits: recentVisits});
+                        for (let i = 0; i < recentVisits.length; i++) {
+                            MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
+                                socket.emit('loadRecentVisitMessages', {
+                                    recentVisitId: recentVisits[i]['id'],
+                                    messages: recentMessages
+                                });
+                            });
+                        }
+                    });
                 });
             });
         }
