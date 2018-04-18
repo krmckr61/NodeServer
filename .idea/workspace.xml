@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Listener.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="46" column="15" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="116" column="19" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/Model/Client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="229" selection-start-line="229" selection-end-line="229" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>trigg</find>
+      <find>console.log('444');</find>
+      <find>conso</find>
+      <find>444</find>
+      <find>console.log(err);</find>
+      <find>reconnect</find>
+      <find>clientD</find>
+      <find>clientDisconnectPage</find>
+      <find>.destro</find>
+      <find>\n</find>
+      <find>Europe</find>
+      <find>timez</find>
+      <find>timezoneOffset</find>
+      <find>function gettime</find>
+      <find>TZ =</find>
+      <find>env</find>
+      <find>Date()</find>
+      <find>new Date</find>
+      <find>UserOnlineTimeMode</find>
+      <find>var</find>
+      <find>UserOnlineTime</find>
+      <find>let</find>
+      <find>sendMessage(</find>
+      <find>clientConnect</find>
+      <find>messageModel</find>
+      <find>Trigger.leaveV</find>
+      <find>});</find>
+      <find>console.log</find>
+      <find>consol</find>
+      <find>console.lo</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>login</replace>
+      <replace>visitor</replace>
+      <replace>Client</replace>
+      <replace>clients</replace>
+      <replace>ClientSocketListener</replace>
+      <replace>SocketListener</replace>
+      <replace>'2018-02-23 00:00'</replace>
+      <replace>ClientModel.</replace>
+      <replace>MessageModel.</replace>
+      <replace>let</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\NodeServer\node_modules\after</dir>
+    </dirStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Model/Model.js" />
+        <option value="$PROJECT_DIR$/Lib/database.js" />
+        <option value="$PROJECT_DIR$/node_modules/pg/lib/connection-parameters.js" />
+        <option value="$PROJECT_DIR$/node_modules/pg/lib/defaults.js" />
+        <option value="$PROJECT_DIR$/Lib/userinfo.js" />
+        <option value="$PROJECT_DIR$/Modules/Visitor.js" />
+        <option value="$PROJECT_DIR$/Lib/socket.js" />
+        <option value="$PROJECT_DIR$/Core/database.js" />
+        <option value="$PROJECT_DIR$/Modules/Visitor/ChatVisitor.js" />
+        <option value="$PROJECT_DIR$/WWW/index.js" />
+        <option value="$PROJECT_DIR$/Main/Socket.js" />
+        <option value="$PROJECT_DIR$/Helpers/UserInfo.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/Visitor.js" />
+        <option value="$PROJECT_DIR$/Modules/Visitor/SiteVisitor.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/VisitorController.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/Client.js" />
+        <option value="$PROJECT_DIR$/Socket/SocketListener.js" />
+        <option value="$PROJECT_DIR$/Socket/Trigger.js" />
+        <option value="$USER_HOME$/Desktop/index.html" />
+        <option value="$PROJECT_DIR$/Core/Request.js" />
+        <option value="$PROJECT_DIR$/Socket/Client/ClientListener.js" />
+        <option value="$PROJECT_DIR$/Socket/Client/ClientSocketListener.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/ServerSocketListener.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Server.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/Helpers/Defines.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/dd.php" />
+        <option value="$PROJECT_DIR$/Helpers/helpers.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Notification.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/BannedWord.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Config.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/PreparedContent.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/UserActivity.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/ServerController.js" />
+        <option value="$PROJECT_DIR$/Helpers/Helper.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/UserOnlineTime.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/BannedUser.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Client.js" />
+        <option value="$PROJECT_DIR$/Helpers/ClientInfo.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Message.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
+        <option value="$PROJECT_DIR$/Socket/Client/Trigger.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/ClientController.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Subject.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/User.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/VisitController.js" />
+        <option value="$PROJECT_DIR$/Socket/Client/SocketListener.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
+        <option value="$PROJECT_DIR$/Socket/Listener.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="162" />
+    <option name="y" value="335" />
+    <option name="width" value="1084" />
+    <option name="height" value="890" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="NodeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeServer" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="NodeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeServer" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="listener&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Socket/Listener.js&#10;client&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;ClientMod&#9;null&#9;null&#10;Trigger&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Socket/Client/Trigger.js&#10;ClientI&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;clientI&#9;null&#9;null&#10;useronli&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Model/UserOnlineTime.js&#10;helper&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/Helper.js&#10;ClientIn&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;Client&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ClientController.js&#10;ClientCon&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ClientController.js&#10;serverCo&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ServerController.js&#10;user&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Modules/Model/User.js&#10;app.b&#9;null&#9;null&#10;dd&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Modules/Model/dd.php&#10;listener.&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Socket/Listener.js&#10;Listen&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Socket/Listener.js&#10;database.&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Lib/database.js" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="javascript.nodejs.core.library.configured.version" value="6.10.3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../livesoft" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\NodeServer\Socket" />
+      <recent name="C:\xampp\htdocs\NodeServer\Socket\Client" />
+      <recent name="C:\xampp\htdocs\NodeServer\Modules" />
+      <recent name="C:\xampp\htdocs\NodeServer\Helpers" />
+      <recent name="C:\xampp\htdocs\NodeServer\Modules\Visitor" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Modules/Model" />
+      <recent name="C:\xampp\htdocs\NodeServer\Modules\Model" />
+      <recent name="C:\xampp\htdocs\NodeServer\Modules\Controllers" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="" />
+      <created>1516875609467</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1516875609467</updated>
+      <workItem from="1516875611231" duration="5389000" />
+      <workItem from="1516886988854" duration="1165000" />
+      <workItem from="1516915661260" duration="10000" />
+      <workItem from="1517134648638" duration="168000" />
+      <workItem from="1517134819045" duration="547000" />
+      <workItem from="1517142032552" duration="8079000" />
+      <workItem from="1517220126016" duration="9045000" />
+      <workItem from="1517306241851" duration="5295000" />
+      <workItem from="1517319195983" duration="67000" />
+      <workItem from="1517319287850" duration="716000" />
+      <workItem from="1517320038121" duration="1806000" />
+      <workItem from="1517390263887" duration="10545000" />
+      <workItem from="1517480110294" duration="1530000" />
+      <workItem from="1517483248052" duration="19623000" />
+      <workItem from="1517560302480" duration="12071000" />
+      <workItem from="1517816834964" duration="16577000" />
+      <workItem from="1517908646142" duration="14915000" />
+      <workItem from="1517997920627" duration="10181000" />
+      <workItem from="1518076364927" duration="2012000" />
+      <workItem from="1518078393595" duration="17627000" />
+      <workItem from="1518166156615" duration="16106000" />
+      <workItem from="1518250661961" duration="1497000" />
+      <workItem from="1518528056500" duration="2464000" />
+      <workItem from="1518627928684" duration="183000" />
+      <workItem from="1518628122540" duration="1638000" />
+      <workItem from="1518773930416" duration="7703000" />
+      <workItem from="1518862999959" duration="14764000" />
+      <workItem from="1518950543576" duration="2938000" />
+      <workItem from="1518971851370" duration="607000" />
+      <workItem from="1518972786304" duration="993000" />
+      <workItem from="1519028274774" duration="309000" />
+      <workItem from="1519028594347" duration="26104000" />
+      <workItem from="1519204934322" duration="6616000" />
+      <workItem from="1519289711178" duration="33108000" />
+      <workItem from="1519416247624" duration="418000" />
+      <workItem from="1519462514128" duration="1639000" />
+      <workItem from="1519553610637" duration="6070000" />
+      <workItem from="1519659976795" duration="599000" />
+      <workItem from="1519851629748" duration="1404000" />
+      <workItem from="1519896251663" duration="29503000" />
+      <workItem from="1519994011119" duration="12231000" />
+      <workItem from="1520069046978" duration="6693000" />
+      <workItem from="1520166765547" duration="4732000" />
+      <workItem from="1520239477929" duration="18872000" />
+      <workItem from="1520324091548" duration="17752000" />
+      <workItem from="1520412805516" duration="19627000" />
+      <workItem from="1520501648688" duration="22666000" />
+      <workItem from="1520616262436" duration="622000" />
+      <workItem from="1520671611128" duration="889000" />
+      <workItem from="1521106901134" duration="622000" />
+      <workItem from="1521114997175" duration="7673000" />
+      <workItem from="1521189592950" duration="9332000" />
+      <workItem from="1521213874907" duration="645000" />
+      <workItem from="1521285580475" duration="2079000" />
+      <workItem from="1521386713224" duration="1880000" />
+      <workItem from="1521459609790" duration="1652000" />
+      <workItem from="1521464231401" duration="7026000" />
+      <workItem from="1521536943125" duration="18692000" />
+      <workItem from="1521626579629" duration="10621000" />
+      <workItem from="1521719028094" duration="9489000" />
+      <workItem from="1521796195434" duration="19424000" />
+      <workItem from="1521879868305" duration="6671000" />
+      <workItem from="1521889236320" duration="2179000" />
+      <workItem from="1521891602958" duration="3126000" />
+      <workItem from="1521973185170" duration="1071000" />
+      <workItem from="1521978881436" duration="10625000" />
+      <workItem from="1522512999380" duration="2769000" />
+      <workItem from="1522505697572" duration="82000" />
+      <workItem from="1522505800489" duration="6124000" />
+      <workItem from="1523284692378" duration="1897000" />
+      <workItem from="1523286644677" duration="1964000" />
+      <workItem from="1523349762574" duration="85000" />
+      <workItem from="1523349855676" duration="13246000" />
+      <workItem from="1523375363620" duration="550000" />
+      <workItem from="1523432830908" duration="3843000" />
+      <workItem from="1523523330844" duration="1468000" />
+      <workItem from="1523527020010" duration="1261000" />
+      <workItem from="1523643009583" duration="936000" />
+      <workItem from="1523697031486" duration="644000" />
+      <workItem from="1523702976065" duration="666000" />
+      <workItem from="1523707225646" duration="2138000" />
+      <workItem from="1523712364856" duration="1308000" />
+      <workItem from="1523739505232" duration="721000" />
+      <workItem from="1523960471324" duration="2329000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="550953000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="25" width="1213" height="999" extended-state="6" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30527496" />
+      <window_info anchor="right" id="Remote Host" order="9" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23000824" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24958494" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Designer" order="3" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" x="91" y="91" width="1738" height="848" id="Documentation" order="10" type="FLOATING" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="npm" order="6" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="3" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Remote Host" order="9" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3509719" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" x="91" y="91" width="1738" height="848" id="Documentation" order="10" type="FLOATING" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="npm" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.15661317" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Structure" order="1" weight="0.24958494" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/pg-connection-string/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-446" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/pg/lib/query.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/pg/lib/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Model.js" />
+    <entry file="file://$PROJECT_DIR$/Model/Visitor.js" />
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4725">
+          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/pg/lib/connection-parameters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/pg/lib/defaults.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WWW/index.js" />
+    <entry file="file://$PROJECT_DIR$/Modules/Visitor/ChatVisitor.js" />
+    <entry file="file://$PROJECT_DIR$/Modules/Visitor/SiteVisitor.js" />
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/VisitorController.js" />
+    <entry file="file://$PROJECT_DIR$/Core/Database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/index.html" />
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/dd.php" />
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io/lib/socket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="233" selection-start-line="233" selection-end-line="233" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript6.js" />
+    <entry file="file://$PROJECT_DIR$/Core/Request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js" />
+    <entry file="file://$PROJECT_DIR$/Helpers/Defines.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/PreparedContent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="134" selection-start-line="9" selection-start-column="134" selection-end-line="9" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/BannedWord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1422">
+          <caret line="79" column="36" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Notification.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2214">
+          <caret line="123" column="31" selection-start-line="123" selection-start-column="31" selection-end-line="123" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/after/test/after-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-684">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/destroy/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/express.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es6.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="5457" column="16" selection-start-line="5457" selection-start-column="16" selection-end-line="5457" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/javascript/nodejs/library/node-globals-stub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="137" column="7" lean-forward="true" selection-start-line="137" selection-start-column="7" selection-end-line="137" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="21" column="13" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/BannedUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Helpers/Helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2970">
+          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Helpers/ClientInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="44" column="2" lean-forward="true" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2772">
+          <caret line="154" column="42" selection-start-line="154" selection-start-column="42" selection-end-line="154" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Client/Trigger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Subject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2745">
+          <caret line="183" column="20" selection-start-line="183" selection-start-column="20" selection-end-line="183" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/UserOnlineTime.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Client/SocketListener.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/VisitController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="334" selection-start-line="334" selection-end-line="334" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="229" selection-start-line="229" selection-end-line="229" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="116" column="19" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="46" column="15" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
