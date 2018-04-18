@@ -143,6 +143,7 @@ SocketListener.prototype.disconnect = function (id, io) {
     Server.addDisconnectUser(id);
     setTimeout(() => {
         if (Server.hasDisconnectUser(id)) {
+            console.log('a user disconnected');
             Server.remove(id);
             Trigger.userDisconnect(id, io);
         }

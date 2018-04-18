@@ -180,9 +180,9 @@ ClientController.remove = async function (clientId, io) {
                         resolve(true);
                     }
                 });
-                console.log('a user disconnected');
+                console.log('a client disconnected');
             } else {
-                console.log('a user disconnected from another tab');
+                console.log('a client disconnected from another tab');
                 this.clients[clientId]['count'] -= 1;
                 resolve(false);
             }
