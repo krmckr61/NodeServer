@@ -109,7 +109,7 @@ Client.prototype.logout = async function (id) {
 Client.prototype.getHistory = async function (dates) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT visit.id, visit.visitorid, visit.data, visit.active, visit.status, visit.created_at::varchar, visit.closed_at::varchar, (SELECT users.name as username FROM visituser INNER JOIN users ON visituser.userid=users.id WHERE visituser.visitid=visit.id limit 1), extract (epoch from (visit.closed_at - visit.created_at)) as chattime FROM visit" +
+            text: "SELECT visit.id, visit.visitorid, visit.data, visit.active, visit.status, visit.created_at::varchar, visit.closed_at::varchar,(SELECT STRING_AGG(DISTINCT(users.name), ', ') AS username FROM users INNER JOIN visituser ON users.id=visituser.userid WHERE visituser.visitid=visit.id GROUP BY visit.id), extract (epoch from (visit.closed_at - visit.created_at)) as chattime FROM visit" +
             "   WHERE" +
             "       visit.status='1' AND " +
             "       (visit.active='2' OR visit.active='3') AND " +
