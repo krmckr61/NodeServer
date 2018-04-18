@@ -25,9 +25,7 @@ Visit.prototype.getActiveTakenVisitsFromUserId = async function (userId) {
 Visit.prototype.getRecentVisits = async function (clientId, visitId) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT visit.*, users.name AS username FROM visit " +
-            "   INNER JOIN visituser ON visit.id=visituser.visitid" +
-            "   INNER JOIN users ON visituser.userid=users.id " +
+            text: "SELECT (SELECT STRING_AGG(DISTINCT(users.name), ' ,') as username FROM users INNER JOIN visituser ON visit.id=visituser.id WHERE users.id=visituser.userid), visit.* FROM visit " +
             "WHERE visit.visitorid=$1 AND (visit.active='2' OR visit.active='3') AND visit.id < $2 AND visit.status='1' ORDER BY visit.id DESC LIMIT 5",
             values: [clientId, visitId]
         }, (err, response) => {
