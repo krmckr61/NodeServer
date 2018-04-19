@@ -134,7 +134,7 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
                         socket.emit('loadRecentVisits', {visitId: visit.id, recentVisits: recentVisits});
                         for (let i = 0; i < recentVisits.length; i++) {
                             MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
-                                socket.emit('loadRecentVisitMessages', {
+                                socket.emit('loadRecentVisitMessages', {visitId: id,
                                     recentVisitId: recentVisits[i]['id'],
                                     messages: recentMessages
                                 });
