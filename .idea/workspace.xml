@@ -4,8 +4,6 @@
     <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socket/Server/SocketListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/SocketListener.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socket/Server/Trigger.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/Trigger.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +17,8 @@
       <file leaf-file-name="Listener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+            <state relative-caret-position="282">
+              <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -28,26 +26,26 @@
       <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+            <state relative-caret-position="214">
+              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ServerController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+            <state relative-caret-position="322">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Trigger.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Trigger.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="83" column="60" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="60" />
+            <state relative-caret-position="1272">
+              <caret line="80" column="96" lean-forward="true" selection-start-line="80" selection-start-column="96" selection-end-line="80" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -178,9 +176,9 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Modules/Controllers/VisitController.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
-        <option value="$PROJECT_DIR$/Modules/Controllers/ServerController.js" />
         <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
         <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/ServerController.js" />
       </list>
     </option>
   </component>
@@ -455,7 +453,7 @@
       <workItem from="1523739505232" duration="721000" />
       <workItem from="1523960471324" duration="2329000" />
       <workItem from="1524218457281" duration="329000" />
-      <workItem from="1524218911158" duration="776000" />
+      <workItem from="1524218911158" duration="3384000" />
     </task>
     <task id="LOCAL-00001" summary="-add a log for disconnecting">
       <created>1524057348073</created>
@@ -513,11 +511,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524156640603</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="-messages of history visits of current chat fixed">
+      <created>1524219907690</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1524219907690</updated>
+    </task>
+    <task id="LOCAL-00010" summary="-when another user logged in the same account, disconnect current sessions">
+      <created>1524222396140</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1524222396140</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="570590000" />
+    <option name="totallyTimeSpent" value="573198000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -602,7 +614,9 @@
     <MESSAGE value="-user name on history messages fixed" />
     <MESSAGE value="-autoTakeClient fixed" />
     <MESSAGE value="-history of history visits fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="-history of history visits fixed" />
+    <MESSAGE value="-messages of history visits of current chat fixed" />
+    <MESSAGE value="-when another user logged in the same account, disconnect current sessions" />
+    <option name="LAST_COMMIT_MESSAGE" value="-when another user logged in the same account, disconnect current sessions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -877,31 +891,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
+    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        <state relative-caret-position="1272">
+          <caret line="80" column="96" lean-forward="true" selection-start-line="80" selection-start-column="96" selection-end-line="80" selection-end-column="96" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        <state relative-caret-position="282">
+          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        <state relative-caret-position="214">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="83" column="60" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="60" />
+        <state relative-caret-position="322">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>

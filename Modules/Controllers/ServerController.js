@@ -20,12 +20,12 @@ ServerController.add = async function (id, socket, io) {
             } else {
                 this.users[id].count++;
             }
-            setTimeout(() => {
-                this.getUserRoom(id, io).emit('disconnectCurrentUsers');
-            }, this.reconnectTime)
+            this.getUserRoom(id, io).emit('disconnectCurrentUsers');
 
-            this.initUserRooms(id, socket);
-            resolve(true);
+            setTimeout(() => {
+                this.initUserRooms(id, socket);
+                resolve(true);
+            }, this.reconnectTime);
         } else {
             this.initUserRooms(id, socket);
             UserModel.addLoginOnlineStatus(id).then((res) => {
