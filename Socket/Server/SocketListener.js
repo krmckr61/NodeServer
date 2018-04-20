@@ -16,7 +16,7 @@ let SocketListener = function () {
 };
 
 SocketListener.prototype.connection = function (id, socket, io) {
-    Server.add(id, socket).then((res) => {
+    Server.add(id, socket, io).then((res) => {
         Trigger.initServer(id, Server.getAll(), socket, io);
     });
 };

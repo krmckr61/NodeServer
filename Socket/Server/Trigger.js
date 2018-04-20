@@ -82,6 +82,7 @@ Trigger.prototype.takeClient = function (clientId, userId, visitId, socket, io) 
                 for (let i = 0; i < recentVisits.length; i++) {
                     MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
                         socket.emit('loadRecentVisitMessages', {
+                            visitId: visitId,
                             recentVisitId: recentVisits[i]['id'],
                             messages: recentMessages
                         });

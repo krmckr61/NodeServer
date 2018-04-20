@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Socket/Server/SocketListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/SocketListener.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socket/Server/Trigger.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/Trigger.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,26 +19,35 @@
       <file leaf-file-name="Listener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
+            <state relative-caret-position="174">
+              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="131" column="62" lean-forward="true" selection-start-line="131" selection-start-column="62" selection-end-line="131" selection-end-column="62" />
+            <state relative-caret-position="268">
+              <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Trigger.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ServerController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Trigger.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+            <state relative-caret-position="354">
+              <caret line="83" column="60" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -43,8 +55,8 @@
       <file leaf-file-name="Visit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+            <state relative-caret-position="468">
+              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -150,7 +162,6 @@
         <option value="$PROJECT_DIR$/Modules/Model/Config.js" />
         <option value="$PROJECT_DIR$/Modules/Model/PreparedContent.js" />
         <option value="$PROJECT_DIR$/Modules/Model/UserActivity.js" />
-        <option value="$PROJECT_DIR$/Modules/Controllers/ServerController.js" />
         <option value="$PROJECT_DIR$/Helpers/Helper.js" />
         <option value="$PROJECT_DIR$/Modules/Model/UserOnlineTime.js" />
         <option value="$PROJECT_DIR$/app.js" />
@@ -163,12 +174,13 @@
         <option value="$PROJECT_DIR$/Modules/Model/User.js" />
         <option value="$PROJECT_DIR$/Socket/Client/SocketListener.js" />
         <option value="$PROJECT_DIR$/Socket/Listener.js" />
-        <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Client.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Modules/Controllers/VisitController.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/ServerController.js" />
         <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
       </list>
     </option>
   </component>
@@ -193,10 +205,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="162" />
-    <option name="y" value="335" />
-    <option name="width" value="1084" />
-    <option name="height" value="890" />
+    <option name="x" value="993" />
+    <option name="y" value="25" />
+    <option name="width" value="927" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -442,6 +454,8 @@
       <workItem from="1523712364856" duration="1308000" />
       <workItem from="1523739505232" duration="721000" />
       <workItem from="1523960471324" duration="2329000" />
+      <workItem from="1524218457281" duration="329000" />
+      <workItem from="1524218911158" duration="776000" />
     </task>
     <task id="LOCAL-00001" summary="-add a log for disconnecting">
       <created>1524057348073</created>
@@ -492,63 +506,55 @@
       <option name="project" value="LOCAL" />
       <updated>1524152096117</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="-history of history visits fixed">
+      <created>1524156640603</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1524156640603</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="565518000" />
+    <option name="totallyTimeSpent" value="570590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30477223" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30585682" />
       <window_info anchor="right" id="Remote Host" order="9" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23519646" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958494" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Designer" order="3" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30527496" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.329718" />
       <window_info anchor="right" x="91" y="91" width="1738" height="848" id="Documentation" order="10" type="FLOATING" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23000824" />
       <window_info id="npm" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="right" id="Remote Host" order="9" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24958494" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="3" />
@@ -759,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="21" column="13" lean-forward="true" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modules/Model/BannedUser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -871,31 +870,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+        <state relative-caret-position="468">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        <state relative-caret-position="365">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
+        <state relative-caret-position="174">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="131" column="62" lean-forward="true" selection-start-line="131" selection-start-column="62" selection-end-line="131" selection-end-column="62" />
+        <state relative-caret-position="268">
+          <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="83" column="60" selection-start-line="83" selection-start-column="60" selection-end-line="83" selection-end-column="60" />
         </state>
       </provider>
     </entry>

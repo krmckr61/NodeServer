@@ -12,7 +12,7 @@ let ServerController = {
     reconnectTime: 2000
 };
 
-ServerController.add = async function (id, socket) {
+ServerController.add = async function (id, socket, io) {
     return new Promise((resolve) => {
         if (this.has(id)) {
             if (this.hasDisconnectUser(id)) {
