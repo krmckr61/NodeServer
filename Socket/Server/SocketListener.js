@@ -149,14 +149,19 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
 };
 
 SocketListener.prototype.disconnect = function (id, io) {
-    Server.addDisconnectUser(id);
-    setTimeout(() => {
-        if (Server.hasDisconnectUser(id)) {
-            console.log('a user disconnected');
-            Server.remove(id);
-            Trigger.userDisconnect(id, io);
-        }
-    }, Server.reconnectTime);
+    if(Server.users[id].count === 1) {
+        Server.addDisconnectUser(id);
+        setTimeout(() => {
+            if (Server.hasDisconnectUser(id)) {
+                console.log('a user disconnected : ' + id);
+                Server.remove(id);
+                Trigger.userDisconnect(id, io);
+            }
+        }, Server.reconnectTime);
+    } else {
+        Server.remove(id);
+        console.log('a user disconnected from another tab : ' + id);
+    }
 };
 
 SocketListener.prototype.setOnlineStatus = function (userId, onlineStatus, io) {

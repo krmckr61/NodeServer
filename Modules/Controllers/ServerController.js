@@ -14,6 +14,9 @@ let ServerController = {
 
 ServerController.add = async function (id, socket, io) {
     return new Promise((resolve) => {
+
+        console.log('a user connected : ' + id);
+
         if (this.has(id)) {
             if (this.hasDisconnectUser(id)) {
                 this.removeDisconnectUser(id);

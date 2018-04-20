@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socket/Server/SocketListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/SocketListener.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +17,8 @@
       <file leaf-file-name="Listener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+            <state relative-caret-position="174">
+              <caret line="93" column="42" lean-forward="true" selection-start-line="93" selection-start-column="42" selection-end-line="93" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -26,8 +26,8 @@
       <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+            <state relative-caret-position="1314">
+              <caret line="163" column="5" lean-forward="true" selection-start-line="163" selection-start-column="5" selection-end-line="163" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -35,8 +35,8 @@
       <file leaf-file-name="ServerController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            <state relative-caret-position="340">
+              <caret line="110" column="35" lean-forward="true" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -70,7 +70,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.log('444');</find>
       <find>conso</find>
       <find>444</find>
       <find>console.log(err);</find>
@@ -100,6 +99,7 @@
       <find>consol</find>
       <find>console.lo</find>
       <find>cli.</find>
+      <find>a user d</find>
     </findStrings>
     <replaceStrings>
       <replace>login</replace>
@@ -176,9 +176,9 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Modules/Controllers/VisitController.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
-        <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
         <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
         <option value="$PROJECT_DIR$/Modules/Controllers/ServerController.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
       </list>
     </option>
   </component>
@@ -453,7 +453,7 @@
       <workItem from="1523739505232" duration="721000" />
       <workItem from="1523960471324" duration="2329000" />
       <workItem from="1524218457281" duration="329000" />
-      <workItem from="1524218911158" duration="3384000" />
+      <workItem from="1524218911158" duration="5290000" />
     </task>
     <task id="LOCAL-00001" summary="-add a log for disconnecting">
       <created>1524057348073</created>
@@ -525,11 +525,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524222396140</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="-when another user logged in the same account, disconnect current sessions">
+      <created>1524223478020</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1524223478020</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="573198000" />
+    <option name="totallyTimeSpent" value="575104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -900,22 +907,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+        <state relative-caret-position="174">
+          <caret line="93" column="42" lean-forward="true" selection-start-line="93" selection-start-column="42" selection-end-line="93" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        <state relative-caret-position="1314">
+          <caret line="163" column="5" lean-forward="true" selection-start-line="163" selection-start-column="5" selection-end-line="163" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Modules/Controllers/ServerController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state relative-caret-position="340">
+          <caret line="110" column="35" lean-forward="true" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
         </state>
       </provider>
     </entry>
