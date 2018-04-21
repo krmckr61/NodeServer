@@ -45,10 +45,10 @@ SocketListener.prototype.addUserToVisit = function (userId, newUserId, visitId, 
     Server.getUserRoom(newUserId, io).emit('takeVisit', {visitId: visitId, userId: newUserId});
 };
 
-SocketListener.prototype.joinVisit = function(userId, clientId, socket, io){
+SocketListener.prototype.joinVisit = function (userId, clientId, socket, io) {
     VisitModel.getVisitIdFromClientId(clientId).then((visitId) => {
         VisitModel.hasUser(userId, visitId).then((hasUser) => {
-            if(!hasUser) {
+            if (!hasUser) {
                 Server.getUserRoom(userId, io).emit('takeVisit', {visitId: visitId, userId: userId});
             } else {
                 Trigger.showInformation('Bu görüşmeye zaten katılmış durumdasınız.', socket);
@@ -70,7 +70,7 @@ SocketListener.prototype.sendMessage = function (userId, data, socket, io) {
 SocketListener.prototype.sendPrivateMessage = function (userId, clientId, message, socket, io) {
     VisitModel.getVisitIdFromClientId(clientId).then((visitId) => {
         MessageModel.sendUserMessage(userId, visitId, message, 1).then((message) => {
-            if(message) {
+            if (message) {
                 Trigger.sendMessage(message, socket, io);
                 Trigger.sendPrivateMessage(userId, io);
             }
@@ -78,7 +78,7 @@ SocketListener.prototype.sendPrivateMessage = function (userId, clientId, messag
     });
 };
 
-SocketListener.prototype.destroyChat = function (visitId, socket, io) {
+SocketListener.prototype.destroyChat = function (userId, visitId, socket, io) {
     ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
         if (clientId) {
             let client = Client.get(clientId);
@@ -86,7 +86,7 @@ SocketListener.prototype.destroyChat = function (visitId, socket, io) {
                 let visitId = client.visitId;
                 if (visitId) {
                     MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
-                        VisitModel.destroyVisit(visitId, '3').then((destroy) => {
+                        VisitModel.destroyVisit(visitId, '3', userId).then((destroy) => {
                             Client.destroyChat(clientId);
                             Trigger.destroyChat(clientId, visitId, message, io);
                             Trigger.clientDisconnect(clientId, io);
@@ -98,6 +98,7 @@ SocketListener.prototype.destroyChat = function (visitId, socket, io) {
                 }
             }
         }
+
     });
 };
 
@@ -121,8 +122,8 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
 
                 socket.emit('takeHistoryChat', visit);
                 MessageModel.getHistoryMessages(id).then((rows) => {
-                    for(let row in rows) {
-                        if(rows[row].userid) {
+                    for (let row in rows) {
+                        if (rows[row].userid) {
                             rows[row].username = visit.users[rows[row].userid];
                         }
                     }
@@ -134,7 +135,8 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
                         socket.emit('loadRecentVisits', {visitId: visit.id, recentVisits: recentVisits});
                         for (let i = 0; i < recentVisits.length; i++) {
                             MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
-                                socket.emit('loadRecentVisitMessages', {visitId: id,
+                                socket.emit('loadRecentVisitMessages', {
+                                    visitId: id,
                                     recentVisitId: recentVisits[i]['id'],
                                     messages: recentMessages
                                 });
@@ -149,7 +151,7 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
 };
 
 SocketListener.prototype.disconnect = function (id, io) {
-    if(Server.users[id].count === 1) {
+    if (Server.users[id].count === 1) {
         Server.addDisconnectUser(id);
         setTimeout(() => {
             if (Server.hasDisconnectUser(id)) {

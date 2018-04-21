@@ -14,21 +14,25 @@ let ServerController = {
 
 ServerController.add = async function (id, socket, io) {
     return new Promise((resolve) => {
-
         console.log('a user connected : ' + id);
-
         if (this.has(id)) {
+            let hasDisconnectUser = false;
             if (this.hasDisconnectUser(id)) {
+                hasDisconnectUser = true;
                 this.removeDisconnectUser(id);
             } else {
                 this.users[id].count++;
             }
             this.getUserRoom(id, io).emit('disconnectCurrentUsers');
-
-            setTimeout(() => {
+            if(!hasDisconnectUser) {
+                setTimeout(() => {
+                    this.initUserRooms(id, socket);
+                    resolve(true);
+                }, this.reconnectTime);
+            } else {
                 this.initUserRooms(id, socket);
                 resolve(true);
-            }, this.reconnectTime);
+            }
         } else {
             this.initUserRooms(id, socket);
             UserModel.addLoginOnlineStatus(id).then((res) => {

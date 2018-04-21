@@ -38,8 +38,8 @@ Listener.prototype.initSockets = function () {
                 ServerSocketListener.sendMessage(id, data, socket, this.io);
             });
 
-            socket.on('destroyChat', (id) => {
-                ServerSocketListener.destroyChat(id, socket, this.io);
+            socket.on('destroyChat', (visitId) => {
+                ServerSocketListener.destroyChat(id, visitId, socket, this.io);
             });
 
             socket.on('readMessages', (id) => {

@@ -81,11 +81,11 @@ Visit.prototype.getVisitIdFromClientId = async function (clientId) {
     });
 };
 
-Visit.prototype.destroyVisit = async function (visitId, active) {
+Visit.prototype.destroyVisit = async function (visitId, active, userId) {
     return new Promise((resolve) => {
         db.query({
-            text: "UPDATE visit SET active=$1, closed_at=$2 WHERE id=$3",
-            values: [active, Helper.getCurrentTimeStamp(), visitId]
+            text: "UPDATE visit SET active=$1, closed_at=$2, closeduser=$4 WHERE id=$3",
+            values: [active, Helper.getCurrentTimeStamp(), visitId, userId]
         }, (err, response) => {
             if (!err) {
                 resolve(true);
@@ -187,6 +187,26 @@ Visit.prototype.getUsersFromVisit = async function (visitId) {
             } else {
                 console.log(err);
                 resolve(false);
+            }
+        });
+    });
+};
+
+Visit.prototype.hasMultipleUsers = async function(visitId) {
+    return new Promise((resolve) => {
+        db.query({
+            text: "SELECT count(visituser.id) AS usercount FROM visituser WHERE visitid=$1 AND visituser.active='1'",
+            values: [visitId]
+        }, (err, response) => {
+            if(!err) {
+                if(response.rows[0]['usercount'] > 1) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            } else {
+                console.log(err);
+                response(false);
             }
         });
     });

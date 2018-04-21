@@ -75,7 +75,7 @@ BannedWord.prototype.initBannedWordNotification = function (userId, visitId, mes
     this.getCouplingWords(message).then((couplingWords) => {
         if (couplingWords) {
             for (let i = 0; i < couplingWords.length; i++) {
-                let notificationText = "Yasaklı kelime kullanıldı : '" + couplingWords[i] + "'";
+                let notificationText = 'Yasaklı kelime kullanıldı : "' + couplingWords[i] + '" | <a href="/chats/' + visitId + '" target="_blank">@' + visitId + '</a>';
                 NotificationModel.add(userId, notificationText).then((response) => {
                 });
             }

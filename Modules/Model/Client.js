@@ -142,6 +142,7 @@ Client.prototype.getVisitId = async function (id) {
                     resolve(false);
                 }
             } else {
+                console.log(err);
                 resolve(false);
             }
         });
@@ -230,11 +231,16 @@ Client.prototype.getClientIdFromVisitId = async function (visitId) {
 Client.prototype.getHistoryVisit = async function (id) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT visit.*,extract (epoch from (visit.closed_at - visit.created_at)) as chattime, users.name as username " +
-            "FROM visit " +
-            "INNER JOIN visituser ON visit.id=visituser.visitid " +
-            "INNER JOIN users ON visituser.userid=users.id " +
-            "WHERE visit.id=$1 AND visit.status='1' AND (visit.active='2' OR visit.active='3')",
+            text: "SELECT " +
+            "visit.*, " +
+            " extract (epoch from (visit.closed_at - visit.created_at)) as chattime," +
+            " (SELECT STRING_AGG(users.name, ', ') FROM visituser INNER JOIN users ON visituser.userid=users.id WHERE visituser.visitid=visit.id) AS username, " +
+            " CASE WHEN visit.closeduser=0 THEN '0' ELSE (SELECT users.name FROM users WHERE users.id=visit.closeduser) END AS closedusername " +
+            " FROM visit " +
+            " WHERE " +
+            " visit.id=$1 AND " +
+            " visit.status='1' AND " +
+            " (visit.active='2' OR visit.active='3')",
             values: [id]
         }, (err, response) => {
             if (!err) {
