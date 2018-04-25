@@ -74,22 +74,25 @@ ClientController.takeClient = async function (clientId, userId, socket, io) {
         ClientModel.hasOperator(clientId).then((hasOperator) => {
             if (!hasOperator) {
                 ClientModel.getVisitId(clientId).then((visitId) => {
+                    console.log(clientId);
                     if (visitId) {
-                        this.clients[clientId].visitId = visitId;
-                        ClientModel.addOperator(visitId, userId).then((add) => {
-                            if (add) {
-                                Visit.joinVisitRoom(visitId, socket);
-                                this.setStatus(clientId, 2);
-                                MessageModel.addWelcomeMessage('clientTaken', visitId).then((welcomeMessage) => {
-                                    UserModel.get(userId).then((user) => {
-                                        this.clients[clientId].users = [user];
-                                        resolve(visitId);
+                        if(this.get(clientId)) {
+                            this.clients[clientId].visitId = visitId;
+                            ClientModel.addOperator(visitId, userId).then((add) => {
+                                if (add) {
+                                    Visit.joinVisitRoom(visitId, socket);
+                                    this.setStatus(clientId, 2);
+                                    MessageModel.addWelcomeMessage('clientTaken', visitId).then((welcomeMessage) => {
+                                        UserModel.get(userId).then((user) => {
+                                            this.clients[clientId].users = [user];
+                                            resolve(visitId);
+                                        });
                                     });
-                                });
-                            } else {
-                                resolve(false);
-                            }
-                        });
+                                } else {
+                                    resolve(false);
+                                }
+                            });
+                        }
                     } else {
                         resolve(false);
                     }

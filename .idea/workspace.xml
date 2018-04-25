@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="">
+    <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="-some bugs fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helpers/ClientInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helpers/ClientInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Model/Visit.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Model/Visit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socket/Server/SocketListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/SocketListener.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socket/Server/Trigger.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/Trigger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Controllers/ClientController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Controllers/ClientController.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +17,8 @@
       <file leaf-file-name="Listener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1764">
-              <caret line="98" column="38" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
+            <state relative-caret-position="360">
+              <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -38,8 +35,8 @@
       <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2394">
-              <caret line="133" column="42" lean-forward="true" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
+            <state relative-caret-position="234">
+              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -53,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ClientController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+            <state relative-caret-position="214">
+              <caret line="78" column="48" lean-forward="true" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -83,17 +80,17 @@
       <file leaf-file-name="Trigger.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1998">
-              <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
+            <state relative-caret-position="414">
+              <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Visit.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Visit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="209" column="20" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="20" />
+            <state relative-caret-position="336">
+              <caret line="208" column="17" lean-forward="true" selection-start-line="208" selection-start-column="17" selection-end-line="208" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -213,7 +210,6 @@
         <option value="$PROJECT_DIR$/Modules/Model/BannedUser.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Message.js" />
         <option value="$PROJECT_DIR$/Socket/Client/Trigger.js" />
-        <option value="$PROJECT_DIR$/Modules/Controllers/ClientController.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Subject.js" />
         <option value="$PROJECT_DIR$/Modules/Model/User.js" />
         <option value="$PROJECT_DIR$/Socket/Client/SocketListener.js" />
@@ -227,6 +223,7 @@
         <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
         <option value="$PROJECT_DIR$/Helpers/ClientInfo.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
+        <option value="$PROJECT_DIR$/Modules/Controllers/ClientController.js" />
       </list>
     </option>
   </component>
@@ -251,10 +248,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="993" />
-    <option name="y" value="25" />
-    <option name="width" value="927" />
-    <option name="height" value="1055" />
+    <option name="x" value="485" />
+    <option name="y" value="313" />
+    <option name="width" value="917" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -304,7 +301,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="listener&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Socket/Listener.js&#10;client&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;ClientMod&#9;null&#9;null&#10;Trigger&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Socket/Client/Trigger.js&#10;ClientI&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;clientI&#9;null&#9;null&#10;useronli&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Model/UserOnlineTime.js&#10;helper&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/Helper.js&#10;ClientIn&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;Client&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ClientController.js&#10;ClientCon&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ClientController.js&#10;serverCo&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ServerController.js&#10;user&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Modules/Model/User.js&#10;app.b&#9;null&#9;null&#10;dd&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Modules/Model/dd.php&#10;listener.&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Socket/Listener.js&#10;Listen&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Socket/Listener.js&#10;database.&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Lib/database.js" />
+    <property name="SearchEverywhereHistoryKey" value="clientContr&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ClientController.js&#10;listener&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Socket/Listener.js&#10;client&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;ClientMod&#9;null&#9;null&#10;Trigger&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Socket/Client/Trigger.js&#10;ClientI&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;clientI&#9;null&#9;null&#10;useronli&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Model/UserOnlineTime.js&#10;helper&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/Helper.js&#10;ClientIn&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Helpers/ClientInfo.js&#10;Client&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ClientController.js&#10;ClientCon&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ClientController.js&#10;serverCo&#9;FILE&#9;file:///opt/lampp/htdocs/NodeServer/Modules/Controllers/ServerController.js&#10;user&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Modules/Model/User.js&#10;app.b&#9;null&#9;null&#10;dd&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Modules/Model/dd.php&#10;listener.&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Socket/Listener.js&#10;Listen&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Socket/Listener.js&#10;database.&#9;FILE&#9;file://C:/xampp/htdocs/NodeServer/Lib/database.js" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="6.10.3" />
@@ -313,17 +310,17 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Modules/Model" />
+      <recent name="C:\xampp\htdocs\NodeServer\Modules\Model" />
+      <recent name="C:\xampp\htdocs\NodeServer\Modules\Controllers" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\NodeServer\Socket" />
       <recent name="C:\xampp\htdocs\NodeServer\Socket\Client" />
       <recent name="C:\xampp\htdocs\NodeServer\Modules" />
       <recent name="C:\xampp\htdocs\NodeServer\Helpers" />
       <recent name="C:\xampp\htdocs\NodeServer\Modules\Visitor" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Modules/Model" />
-      <recent name="C:\xampp\htdocs\NodeServer\Modules\Model" />
-      <recent name="C:\xampp\htdocs\NodeServer\Modules\Controllers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -505,7 +502,7 @@
       <workItem from="1524232068732" duration="8478000" />
       <workItem from="1524302648128" duration="5054000" />
       <workItem from="1524587978208" duration="8737000" />
-      <workItem from="1524680225886" duration="18000" />
+      <workItem from="1524680225886" duration="2182000" />
     </task>
     <task id="LOCAL-00001" summary="-add a log for disconnecting">
       <created>1524057348073</created>
@@ -598,24 +595,30 @@
       <option name="project" value="LOCAL" />
       <updated>1524313894935</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="-some bugs fixed">
+      <created>1524680296215</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1524680296215</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="598580000" />
+    <option name="totallyTimeSpent" value="600744000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30585682" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30585682" />
       <window_info anchor="right" id="Remote Host" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24626453" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24626453" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958494" />
@@ -690,7 +693,8 @@
     <MESSAGE value="-messages of history visits of current chat fixed" />
     <MESSAGE value="-when another user logged in the same account, disconnect current sessions" />
     <MESSAGE value="-add low score visits on report module&#10;-add visit id in used blockedwords table" />
-    <option name="LAST_COMMIT_MESSAGE" value="-add low score visits on report module&#10;-add visit id in used blockedwords table" />
+    <MESSAGE value="-some bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="-some bugs fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -930,31 +934,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1998">
-          <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modules/Model/User.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5472">
           <caret line="304" column="14" selection-start-line="304" selection-start-column="14" selection-end-line="304" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1764">
-          <caret line="98" column="38" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -979,17 +962,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2394">
-          <caret line="133" column="42" lean-forward="true" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
+        <state relative-caret-position="336">
+          <caret line="208" column="17" lean-forward="true" selection-start-line="208" selection-start-column="17" selection-end-line="208" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
+    <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="209" column="20" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="20" />
+        <state relative-caret-position="360">
+          <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="78" column="48" lean-forward="true" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
         </state>
       </provider>
     </entry>
