@@ -53,6 +53,7 @@ Trigger.prototype.loadTalkingClients = function (id, socket) {
                             for (let i = 0; i < recentVisits.length; i++) {
                                 MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
                                     socket.emit('loadRecentVisitMessages', {
+                                        visitId: row.id,
                                         recentVisitId: recentVisits[i]['id'],
                                         messages: recentMessages
                                     });
@@ -106,6 +107,7 @@ Trigger.prototype.takeNewClient = function (clientId, user, visitId, socket, io)
                 for (let i = 0; i < recentVisits.length; i++) {
                     MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
                         socket.emit('loadRecentVisitMessages', {
+                            visitId: visitId,
                             recentVisitId: recentVisits[i]['id'],
                             messages: recentMessages
                         });

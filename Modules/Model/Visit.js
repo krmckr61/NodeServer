@@ -25,8 +25,11 @@ Visit.prototype.getActiveTakenVisitsFromUserId = async function (userId) {
 Visit.prototype.getRecentVisits = async function (clientId, visitId) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT (SELECT STRING_AGG(DISTINCT(users.name), ', ') as username FROM users INNER JOIN visituser ON users.id=visituser.userid WHERE visituser.visitid=visit.id), visit.* FROM visit " +
-            "WHERE visit.visitorid=$1 AND (visit.active='2' OR visit.active='3') AND visit.id < $2 AND visit.status='1' ORDER BY visit.id DESC LIMIT 5",
+            text: "SELECT (SELECT STRING_AGG(DISTINCT(users.name), ', ') as username FROM users INNER JOIN visituser ON users.id=visituser.userid WHERE visituser.visitid=visit.id), visit.*," +
+            " extract (epoch from (visit.closed_at - visit.created_at)) as chattime, " +
+            " CASE WHEN visit.closeduser=0 THEN '0' ELSE (SELECT users.name FROM users WHERE users.id=visit.closeduser) END AS closedusername" +
+            " FROM visit " +
+            " WHERE visit.visitorid=$1 AND (visit.active='2' OR visit.active='3') AND visit.id < $2 AND visit.status='1' ORDER BY visit.id DESC LIMIT 5",
             values: [clientId, visitId]
         }, (err, response) => {
             if (!err) {
@@ -205,7 +208,6 @@ Visit.prototype.hasMultipleUsers = async function(visitId) {
                     resolve(false);
                 }
             } else {
-                console.log(err);
                 response(false);
             }
         });

@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47cdf1a8-08f1-424d-bab0-4269af6262ff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Controllers/ServerController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Model/BannedWord.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Model/BannedWord.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Model/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Model/Client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helpers/ClientInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helpers/ClientInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Model/Visit.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Model/Visit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socket/Listener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Listener.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Socket/Server/SocketListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/SocketListener.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socket/Server/Trigger.js" beforeDir="false" afterPath="$PROJECT_DIR$/Socket/Server/Trigger.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +20,17 @@
       <file leaf-file-name="Listener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+            <state relative-caret-position="1764">
+              <caret line="98" column="38" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Socket/Client/SocketListener.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -31,17 +38,8 @@
       <file leaf-file-name="SocketListener.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="60" column="37" lean-forward="true" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BannedWord.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Modules/Model/BannedWord.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+            <state relative-caret-position="2394">
+              <caret line="133" column="42" lean-forward="true" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -58,8 +56,17 @@
       <file leaf-file-name="ClientController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="75" column="36" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
+            <state relative-caret-position="666">
+              <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientInfo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Helpers/ClientInfo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="828">
+              <caret line="46" column="38" lean-forward="true" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -67,8 +74,8 @@
       <file leaf-file-name="Client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/Model/Client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4230">
-              <caret line="235" column="45" lean-forward="true" selection-start-line="235" selection-start-column="45" selection-end-line="235" selection-end-column="45" />
+            <state relative-caret-position="4212">
+              <caret line="234" column="25" lean-forward="true" selection-start-line="234" selection-start-column="25" selection-end-line="234" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -76,17 +83,26 @@
       <file leaf-file-name="Trigger.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3330">
-              <caret line="185" selection-start-line="185" selection-end-line="185" />
+            <state relative-caret-position="1998">
+              <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Visit.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Visit.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1368">
-              <caret line="74" column="35" lean-forward="true" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
+            <state relative-caret-position="354">
+              <caret line="209" column="20" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/Model/User.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5472">
+              <caret line="304" column="14" selection-start-line="304" selection-start-column="14" selection-end-line="304" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -102,14 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.log(err);</find>
-      <find>reconnect</find>
-      <find>clientD</find>
-      <find>clientDisconnectPage</find>
-      <find>.destro</find>
-      <find>\n</find>
-      <find>Europe</find>
-      <find>timez</find>
       <find>timezoneOffset</find>
       <find>function gettime</find>
       <find>TZ =</find>
@@ -132,6 +140,14 @@
       <find>console.log</find>
       <find>.des</find>
       <find>733</find>
+      <find>console.log(data);</find>
+      <find>loadRecentVisits</find>
+      <find>loadRecentVisitMessages</find>
+      <find>getRece</find>
+      <find>get</find>
+      <find>case</find>
+      <find>getRecentVisi</find>
+      <find>chattime</find>
     </findStrings>
     <replaceStrings>
       <replace>login</replace>
@@ -195,7 +211,6 @@
         <option value="$PROJECT_DIR$/Modules/Model/UserOnlineTime.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Modules/Model/BannedUser.js" />
-        <option value="$PROJECT_DIR$/Helpers/ClientInfo.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Message.js" />
         <option value="$PROJECT_DIR$/Socket/Client/Trigger.js" />
         <option value="$PROJECT_DIR$/Modules/Controllers/ClientController.js" />
@@ -204,13 +219,14 @@
         <option value="$PROJECT_DIR$/Socket/Client/SocketListener.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Modules/Controllers/VisitController.js" />
-        <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
         <option value="$PROJECT_DIR$/Modules/Controllers/ServerController.js" />
         <option value="$PROJECT_DIR$/Socket/Listener.js" />
-        <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
         <option value="$PROJECT_DIR$/Modules/Model/Client.js" />
-        <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
         <option value="$PROJECT_DIR$/Modules/Model/BannedWord.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/SocketListener.js" />
+        <option value="$PROJECT_DIR$/Socket/Server/Trigger.js" />
+        <option value="$PROJECT_DIR$/Helpers/ClientInfo.js" />
+        <option value="$PROJECT_DIR$/Modules/Model/Visit.js" />
       </list>
     </option>
   </component>
@@ -487,7 +503,9 @@
       <workItem from="1524218457281" duration="329000" />
       <workItem from="1524218911158" duration="6479000" />
       <workItem from="1524232068732" duration="8478000" />
-      <workItem from="1524302648128" duration="3124000" />
+      <workItem from="1524302648128" duration="5054000" />
+      <workItem from="1524587978208" duration="8737000" />
+      <workItem from="1524680225886" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="-add a log for disconnecting">
       <created>1524057348073</created>
@@ -573,14 +591,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524226188354</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="-add low score visits on report module&#10;-add visit id in used blockedwords table">
+      <created>1524313894935</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1524313894935</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="587895000" />
+    <option name="totallyTimeSpent" value="598580000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="7" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -590,7 +615,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30585682" />
       <window_info anchor="right" id="Remote Host" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2407305" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24626453" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958494" />
@@ -664,7 +689,8 @@
     <MESSAGE value="-history of history visits fixed" />
     <MESSAGE value="-messages of history visits of current chat fixed" />
     <MESSAGE value="-when another user logged in the same account, disconnect current sessions" />
-    <option name="LAST_COMMIT_MESSAGE" value="-when another user logged in the same account, disconnect current sessions" />
+    <MESSAGE value="-add low score visits on report module&#10;-add visit id in used blockedwords table" />
+    <option name="LAST_COMMIT_MESSAGE" value="-add low score visits on report module&#10;-add visit id in used blockedwords table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -834,13 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Helpers/ClientInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="44" column="2" lean-forward="true" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modules/Model/Message.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -876,13 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Model/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="334" selection-start-line="334" selection-end-line="334" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -897,13 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Client/SocketListener.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -911,17 +916,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
+    <entry file="file://$PROJECT_DIR$/Modules/Model/BannedWord.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3330">
-          <caret line="185" selection-start-line="185" selection-end-line="185" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="75" column="36" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
+        <state relative-caret-position="390">
+          <caret line="77" column="168" lean-forward="true" selection-start-line="77" selection-start-column="168" selection-end-line="77" selection-end-column="168" />
         </state>
       </provider>
     </entry>
@@ -932,38 +930,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Model/Client.js">
+    <entry file="file://$PROJECT_DIR$/Socket/Server/Trigger.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4230">
-          <caret line="235" column="45" lean-forward="true" selection-start-line="235" selection-start-column="45" selection-end-line="235" selection-end-column="45" />
+        <state relative-caret-position="1998">
+          <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
+    <entry file="file://$PROJECT_DIR$/Modules/Model/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="74" column="35" lean-forward="true" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
+        <state relative-caret-position="5472">
+          <caret line="304" column="14" selection-start-line="304" selection-start-column="14" selection-end-line="304" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Listener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+        <state relative-caret-position="1764">
+          <caret line="98" column="38" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Controllers/ClientController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Helpers/ClientInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="46" column="38" lean-forward="true" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4212">
+          <caret line="234" column="25" lean-forward="true" selection-start-line="234" selection-start-column="25" selection-end-line="234" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Socket/Client/SocketListener.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Socket/Server/SocketListener.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="60" column="37" lean-forward="true" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+        <state relative-caret-position="2394">
+          <caret line="133" column="42" lean-forward="true" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Model/BannedWord.js">
+    <entry file="file://$PROJECT_DIR$/Modules/Model/Visit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+        <state relative-caret-position="354">
+          <caret line="209" column="20" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="20" />
         </state>
       </provider>
     </entry>

@@ -151,7 +151,7 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
 };
 
 SocketListener.prototype.disconnect = function (id, io) {
-    if (Server.users[id].count === 1) {
+    if (Server.get(id) && Server.users[id].count === 1) {
         Server.addDisconnectUser(id);
         setTimeout(() => {
             if (Server.hasDisconnectUser(id)) {
