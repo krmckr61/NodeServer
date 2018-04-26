@@ -292,6 +292,7 @@ User.prototype.getAvaibleUserId = async function getAvaibleUsers(userArr) {
             " INNER JOIN role_user ON users.id=role_user.user_id" +
             " INNER JOIN roles ON role_user.role_id=roles.id" +
             " WHERE" +
+            " users.onlinestatus='1' AND " +
             " roles.name='canli-destek' AND (" + queryString + ") AND  (" +
             " SELECT" +
             " count(visituser.id)" +
@@ -342,6 +343,7 @@ User.prototype.getAvaibleUserIdFromSubjectId = async function(userArr, subjectId
             " INNER JOIN roles ON role_user.role_id=roles.id" +
             " INNER JOIN usersubject ON users.id=usersubject.userid" +
             " WHERE" +
+            " users.onlinestatus='1' AND " +
             " usersubject.subjectid='" + subjectId + "' AND" +
             " roles.name='canli-destek' AND (" + queryString + ") AND  (" +
             " SELECT" +
