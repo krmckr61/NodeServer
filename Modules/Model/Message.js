@@ -53,7 +53,7 @@ Message.prototype.sendSystemMessage = async function (visitId, message) {
 Message.prototype.getMessages = async function (visitId) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT message.*, users.name as username FROM message LEFT JOIN users ON message.userid=users.id WHERE message.visitid=$1 ORDER BY message.created_at ASC",
+            text: "SELECT message.*, users.name as username FROM message LEFT JOIN users ON message.userid=users.id WHERE message.visitid=$1 ORDER BY message.id",
             values: [visitId]
         }, (err, response) => {
             if (!err) {
