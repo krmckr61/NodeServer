@@ -42,6 +42,7 @@ ClientController.add = async function (id, socket) {
                         } else {
                             data.banned = false;
                         }
+                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os);
                         this.clients[id] = {id: id, status: status, count: 1, data: data, users: []};
                         resolve(this.get(id));
                     });
@@ -74,7 +75,6 @@ ClientController.takeClient = async function (clientId, userId, socket, io) {
         ClientModel.hasOperator(clientId).then((hasOperator) => {
             if (!hasOperator) {
                 ClientModel.getVisitId(clientId).then((visitId) => {
-                    console.log(clientId);
                     if (visitId) {
                         if(this.get(clientId)) {
                             this.clients[clientId].visitId = visitId;
