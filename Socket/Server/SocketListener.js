@@ -230,7 +230,6 @@ SocketListener.prototype.banUser = function (userId, clientId, date, socket, io)
 };
 
 SocketListener.prototype.getCurrentTime = function (socket) {
-    console.log('date geldi');
     let date = Helper.getCurrentTimeStamp();
     socket.emit('setCurrentTime', date);
 };
