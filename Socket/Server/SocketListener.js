@@ -11,6 +11,7 @@ let PreparedContentModel = require('../../Modules/Model/PreparedContent');
 let Visit = require('../../Modules/Controllers/VisitController');
 let ClientSocketController = require('../Client/SocketListener');
 let BannedUserModel = require('../../Modules/Model/BannedUser');
+let Helper = require('../../Helpers/Helper');
 
 let SocketListener = function () {
 };
@@ -226,6 +227,12 @@ SocketListener.prototype.banUser = function (userId, clientId, date, socket, io)
             }
         });
     }
+};
+
+SocketListener.prototype.getCurrentTime = function (socket) {
+    console.log('date geldi');
+    let date = Helper.getCurrentTimeStamp();
+    socket.emit('setCurrentTime', date);
 };
 
 module.exports = new SocketListener();

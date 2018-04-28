@@ -90,6 +90,10 @@ Listener.prototype.initSockets = function () {
                 ServerSocketListener.sendPrivateMessage(id, data.clientId, data.message, socket, this.io);
             });
 
+            socket.on('getCurrentTime', () => {
+                ServerSocketListener.getCurrentTime(socket);
+            });
+
             socket.on('disconnect', () => {
                 ServerSocketListener.disconnect(id, this.io);
             });
