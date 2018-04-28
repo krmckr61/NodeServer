@@ -156,16 +156,20 @@ User.prototype.setOnlineStatus = async function (userId, onlineStatus) {
     return new Promise((resolve) => {
         this.closeLastOnlineStatus(userId);
         db.query({
-            text: "INSERT INTO userstatus(userid, status) VALUES($1, $2)",
+            text: "INSERT INTO userstatus(userid, status) VALUES($1, $2) RETURNING created_at",
             values: [userId, onlineStatus]
         }, (err, response) => {
             if (!err) {
                 db.query({
                     text: "UPDATE users SET onlinestatus=$1 WHERE id=$2",
                     values: [onlineStatus, userId]
-                }, (err, response) => {
+                }, (err, response2) => {
                     if (!err) {
-                        resolve(true);
+                        if(response.rows.length > 0) {
+                            resolve(response.rows[0].created_at);
+                        } else {
+                            resolve(false);
+                        }
                     } else {
                         resolve(false);
                     }

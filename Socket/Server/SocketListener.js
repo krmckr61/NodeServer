@@ -164,10 +164,10 @@ SocketListener.prototype.disconnect = function (id, io) {
 };
 
 SocketListener.prototype.setOnlineStatus = function (userId, onlineStatus, io) {
-    UserModel.setOnlineStatus(userId, onlineStatus).then((res) => {
-        if (res) {
+    UserModel.setOnlineStatus(userId, onlineStatus).then((createdAt) => {
+        if (createdAt) {
             Server.getUserRoom(userId, io).emit('setOnlineStatus', onlineStatus);
-            io.to('user').emit('userSetStatus', {userId: userId, onlineStatus: onlineStatus});
+            io.to('user').emit('userSetStatus', {userId: userId, onlineStatus: onlineStatus, created_at: new Date(createdAt).toLocaleString()});
         }
     });
 };
