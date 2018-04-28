@@ -58,20 +58,30 @@ SocketListener.prototype.clientLogin = function (id, data, socket, io) {
 };
 
 SocketListener.prototype.disconnect = function (clientId, socket, io) {
-    Client.addDisconnectClient(clientId);
-    setTimeout(() => {
-        if (Client.hasDisconnectClient(clientId)) {
-            Client.remove(clientId, io).then((visitId) => {
-                MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
-                    ServerTrigger.destroyChat(clientId, visitId, message, io);
-                    ServerTrigger.clientDisconnect(clientId, io);
-                    if (typeof visitId === 'number') {
-                        ServerTrigger.clientDisconnectChat(visitId, io);
-                    }
-                });
-            });
+    let client = Client.get(clientId);
+    if (client) {
+        if (client.count === 1) {
+            Client.addDisconnectClient(clientId);
+            setTimeout(() => {
+                if (Client.hasDisconnectClient(clientId)) {
+                    Client.remove(clientId, io).then((visitId) => {
+                        if (typeof visitId === 'number') {
+                            MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
+                                ServerTrigger.destroyChat(clientId, visitId, message, io);
+                                ServerTrigger.clientDisconnect(clientId, io);
+                                if (typeof visitId === 'number') {
+                                    ServerTrigger.clientDisconnectChat(visitId, io);
+                                }
+                            });
+                        }
+                    });
+                }
+                Client.removeDisconnectClient(clientId);
+            }, Client.reconnectTime);
+        } else {
+            Client.remove(clientId, io);
         }
-    }, Client.reconnectTime);
+    }
 };
 
 SocketListener.prototype.sendMessage = function (data, io) {

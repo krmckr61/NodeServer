@@ -18,11 +18,13 @@ ClientController.add = async function (id, socket) {
     return new Promise((resolve) => {
         if (this.has(id)) {
             if (this.hasDisconnectClient(id)) {
+                console.log('a client reloaded : - ip : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os);
                 this.removeDisconnectClient(id);
                 let client = this.get(id);
                 client.reconnect = true;
                 resolve(client);
             } else {
+                console.log('a client connected from another tab : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os);
                 this.clients[id]['count'] += 1;
                 resolve(this.get(id));
             }

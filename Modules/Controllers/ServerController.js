@@ -14,13 +14,14 @@ let ServerController = {
 
 ServerController.add = async function (id, socket, io) {
     return new Promise((resolve) => {
-        console.log('a user connected : ' + id);
         if (this.has(id)) {
             let hasDisconnectUser = false;
             if (this.hasDisconnectUser(id)) {
+                console.log('a user reloaded : ' + id);
                 hasDisconnectUser = true;
                 this.removeDisconnectUser(id);
             } else {
+                console.log('a user connected from another tab : ' + id + ' - count : ' + this.users[id].count);
                 this.users[id].count++;
             }
             this.getUserRoom(id, io).emit('disconnectCurrentUsers');
@@ -34,6 +35,7 @@ ServerController.add = async function (id, socket, io) {
                 resolve(true);
             }
         } else {
+            console.log('a user connected : ' + id);
             this.initUserRooms(id, socket);
             UserModel.addLoginOnlineStatus(id).then((res) => {
                 this.users[id] = {id: id, count: 1, connectionDate: Helper.getCurrentTimeStamp()};
@@ -112,7 +114,7 @@ ServerController.remove = function (id) {
                 }
             });
         } else {
-            this.users[id].count--;
+            this.users[id].count = this.users[id].count - 1;
         }
         return true;
     } else {
