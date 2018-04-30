@@ -73,6 +73,8 @@ SocketListener.prototype.disconnect = function (clientId, socket, io) {
                                     ServerTrigger.clientDisconnectChat(visitId, io);
                                 }
                             });
+                        } else {
+                            ServerTrigger.clientDisconnect(clientId, io);
                         }
                     });
                 }
