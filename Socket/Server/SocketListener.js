@@ -144,6 +144,38 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
 
 };
 
+
+SocketListener.prototype.watchChat = function (userId, clientId, socket, io) {
+    VisitModel.getVisitIdFromClientId(clientId).then((visitId) => {
+        VisitModel.hasUser(userId, visitId).then((hasUser) => {
+            if (!hasUser) {
+                ClientModel.getVisit(visitId).then((visit) => {
+                    socket.emit('watchChat', visit);
+                    MessageModel.getMessages(visitId).then((messages) => {
+                        socket.emit('loadMessages', {messages: messages, visitid: visitId});
+                    });
+                    Visit.joinVisitRoom(visitId, socket);
+
+                    VisitModel.getRecentVisits(clientId, visit.id).then((recentVisits) => {
+                        socket.emit('loadRecentVisits', {visitId: visit.id, recentVisits: recentVisits});
+                        for (let i = 0; i < recentVisits.length; i++) {
+                            MessageModel.getMessages(recentVisits[i]['id']).then((recentMessages) => {
+                                socket.emit('loadRecentVisitMessages', {
+                                    visitId: visitId,
+                                    recentVisitId: recentVisits[i]['id'],
+                                    messages: recentMessages
+                                });
+                            });
+                        }
+                    });
+                });
+            } else {
+                Trigger.showInformation('Bu görüşmeye zaten katılmış durumdasınız.', socket);
+            }
+        });
+    });
+};
+
 SocketListener.prototype.disconnect = function (id, io) {
     if (Server.get(id)) {
         if (Server.users[id].count === 1) {
@@ -167,7 +199,11 @@ SocketListener.prototype.setOnlineStatus = function (userId, onlineStatus, io) {
     UserModel.setOnlineStatus(userId, onlineStatus).then((createdAt) => {
         if (createdAt) {
             Server.getUserRoom(userId, io).emit('setOnlineStatus', onlineStatus);
-            io.to('user').emit('userSetStatus', {userId: userId, onlineStatus: onlineStatus, created_at: new Date(createdAt).toLocaleString()});
+            io.to('user').emit('userSetStatus', {
+                userId: userId,
+                onlineStatus: onlineStatus,
+                created_at: new Date(createdAt).toLocaleString()
+            });
         }
     });
 };
@@ -232,6 +268,10 @@ SocketListener.prototype.banUser = function (userId, clientId, date, socket, io)
 SocketListener.prototype.getCurrentTime = function (socket) {
     let date = Helper.getCurrentTimeStamp();
     socket.emit('setCurrentTime', date);
+};
+
+SocketListener.prototype.logoutRoom = function (visitId, socket) {
+    Visit.leaveVisitRoom(visitId, socket);
 };
 
 module.exports = new SocketListener();

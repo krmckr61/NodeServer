@@ -94,6 +94,14 @@ Listener.prototype.initSockets = function () {
                 ServerSocketListener.getCurrentTime(socket);
             });
 
+            socket.on('watchChat', (clientId) => {
+                ServerSocketListener.watchChat(id, clientId, socket, this.io);
+            });
+
+            socket.on('logoutRoom', (visitId) => {
+                ServerSocketListener.logoutRoom(visitId, socket);
+            });
+
             socket.on('disconnect', () => {
                 ServerSocketListener.disconnect(id, this.io);
             });
