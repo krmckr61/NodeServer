@@ -9,12 +9,12 @@ let Client = function () {
 Client.prototype.getStatus = async function (id) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT id FROM visit where visitorid=$1 AND active='1' AND status='1' ORDER BY id DESC LIMIT 1",
+            text: "SELECT id FROM visit where visitorid=$1 AND active='1' AND status='1' LIMIT 1",
             values: [id]
         }, (err, response) => {
             if (!err) {
                 if (response.rows.length > 0) {
-                    this.hasOperator(response.rows[0][id]).then((res) => {
+                    this.hasOperator(response.rows[0].id).then((res) => {
                         if (res) {
                             resolve(2);
                         } else {
@@ -31,11 +31,11 @@ Client.prototype.getStatus = async function (id) {
     });
 };
 
-Client.prototype.hasOperator = async function (visitorId) {
+Client.prototype.hasOperator = async function (visitId) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT id FROM visituser WHERE visitorid=$1 AND userid IS NOT NULL ORDER BY id DESC LIMIT 1",
-            values: [visitorId]
+            text: "SELECT id FROM visituser WHERE visitid=$1 AND userid IS NOT NULL ORDER BY id DESC LIMIT 1",
+            values: [visitId]
         }, (err, response) => {
             if (!err) {
                 if (response.rows.length > 0) {

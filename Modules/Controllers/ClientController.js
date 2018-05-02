@@ -4,6 +4,7 @@ let UserModel = require('../Model/User');
 let ClientInfo = require('../../Helpers/ClientInfo');
 let Defines = require('../../Helpers/Defines');
 let Visit = require('./VisitController');
+let VisitModel = require('../Model/Visit');
 
 
 let ClientController = {
@@ -44,9 +45,41 @@ ClientController.add = async function (id, socket) {
                         } else {
                             data.banned = false;
                         }
-                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os);
-                        this.clients[id] = {id: id, status: status, count: 1, data: data, users: []};
-                        resolve(this.get(id));
+                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + " - status : " + status);
+                        VisitModel.getVisitIdFromClientId(id).then((visitId) => {
+                            if (visitId) {
+                                VisitModel.getDataFromId(visitId).then((visitData) => {
+                                    if(visitData) {
+                                        data = Object.assign(data, visitData);
+                                    }
+                                    VisitModel.getUsersFromVisit(visitId).then((users) => {
+                                        if (users.length > 0) {
+                                            this.clients[id] = {
+                                                id: id,
+                                                status: status,
+                                                count: 1,
+                                                data: data,
+                                                visitId: visitId,
+                                                users: users
+                                            };
+                                            resolve(this.get(id));
+                                        } else {
+                                            this.clients[id] = {
+                                                id: id,
+                                                status: status,
+                                                count: 1,
+                                                data: data,
+                                                visitId: visitId,
+                                                users: []
+                                            };
+                                        }
+                                    });
+                                });
+                            } else {
+                                this.clients[id] = {id: id, status: status, count: 1, data: data, users: []};
+                                resolve(this.get(id));
+                            }
+                        });
                     });
                 });
             });
@@ -78,7 +111,7 @@ ClientController.takeClient = async function (clientId, userId, socket, io) {
             if (!hasOperator) {
                 ClientModel.getVisitId(clientId).then((visitId) => {
                     if (visitId) {
-                        if(this.get(clientId)) {
+                        if (this.get(clientId)) {
                             this.clients[clientId].visitId = visitId;
                             ClientModel.addOperator(visitId, userId).then((add) => {
                                 if (add) {

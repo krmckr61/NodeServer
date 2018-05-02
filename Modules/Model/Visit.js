@@ -105,8 +105,8 @@ Visit.prototype.getLastVisitIdFromClientId = async function (clientId) {
             text: "SELECT id FROM visit WHERE visitorid=$1 AND active!='1' ORDER BY id DESC LIMIT 1",
             values: [clientId]
         }, (err, response) => {
-            if(!err) {
-                if(response.rows.length > 0) {
+            if (!err) {
+                if (response.rows.length > 0) {
                     resolve(response.rows[0]['id']);
                 } else {
                     resolve(false);
@@ -121,10 +121,10 @@ Visit.prototype.getLastVisitIdFromClientId = async function (clientId) {
 Visit.prototype.rateChat = async function (visitId, value) {
     return new Promise((resolve) => {
         db.query({
-            text :"UPDATE visit SET point=$1 WHERE id=$2",
+            text: "UPDATE visit SET point=$1 WHERE id=$2",
             values: [value, visitId]
         }, (err, response) => {
-            if(!err) {
+            if (!err) {
                 resolve(true);
             } else {
                 resolve(false);
@@ -136,11 +136,11 @@ Visit.prototype.rateChat = async function (visitId, value) {
 Visit.prototype.hasUser = async function (userId, visitId) {
     return new Promise((resolve) => {
         db.query({
-            text : "SELECT id FROM visituser WHERE userid=$1 AND visitid=$2 AND active='1'",
+            text: "SELECT id FROM visituser WHERE userid=$1 AND visitid=$2 AND active='1'",
             values: [userId, visitId]
         }, (err, response) => {
-            if(!err) {
-                if(response.rows.length > 0) {
+            if (!err) {
+                if (response.rows.length > 0) {
                     resolve(true);
                 } else {
                     resolve(false);
@@ -155,11 +155,11 @@ Visit.prototype.hasUser = async function (userId, visitId) {
 Visit.prototype.getUserCount = async function (visitId) {
     return new Promise((resolve) => {
         db.query({
-            text : "SELECT count(id) AS usercount FROM visituser WHERE visitid=$1 AND active='1'",
+            text: "SELECT count(id) AS usercount FROM visituser WHERE visitid=$1 AND active='1'",
             values: [visitId]
         }, (err, response) => {
-            if(!err) {
-                if(response.rows.length > 0) {
+            if (!err) {
+                if (response.rows.length > 0) {
                     resolve(response.rows[0].usercount);
                 } else {
                     resolve(false);
@@ -177,38 +177,52 @@ Visit.prototype.getUsersFromVisit = async function (visitId) {
             text: "SELECT users.id, users.name from visit INNER JOIN visituser ON visit.id=visituser.visitid INNER JOIN users ON visituser.userid=users.id WHERE visit.id=$1",
             values: [visitId]
         }, (err, response) => {
-            if(!err) {
-                if(response.rows.length > 0) {
-                    let arr = {};
-                    for(let key in response.rows) {
-                        arr[response.rows[key].id] = response.rows[key].name;
-                    }
-                    resolve(arr);
+            if (!err) {
+                if (response.rows.length > 0) {
+                    resolve(response.rows);
                 } else {
                     resolve(false);
                 }
             } else {
-                console.log(err);
                 resolve(false);
             }
         });
     });
 };
 
-Visit.prototype.hasMultipleUsers = async function(visitId) {
+Visit.prototype.hasMultipleUsers = async function (visitId) {
     return new Promise((resolve) => {
         db.query({
             text: "SELECT count(visituser.id) AS usercount FROM visituser WHERE visitid=$1 AND visituser.active='1'",
             values: [visitId]
         }, (err, response) => {
-            if(!err) {
-                if(response.rows[0]['usercount'] > 1) {
+            if (!err) {
+                if (response.rows[0]['usercount'] > 1) {
                     resolve(true);
                 } else {
                     resolve(false);
                 }
             } else {
                 response(false);
+            }
+        });
+    });
+};
+
+Visit.prototype.getDataFromId = async function (visitId) {
+    return new Promise((resolve) => {
+        db.query({
+            text: "SELECT data FROM visit WHERE id=$1",
+            values: [visitId]
+        }, (err, response) => {
+            if(!err) {
+                if(response.rows.length > 0) {
+                    resolve(response.rows[0].data);
+                } else {
+                    resolve(false);
+                }
+            } else {
+                resolve(false);
             }
         });
     });

@@ -34,6 +34,7 @@ SocketListener.prototype.clientLogin = function (id, data, socket, io) {
                 }
             })
         }
+        console.log('a client login - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os);
         cli.login(id, data).then((visitId) => {
             if (visitId) {
                 Visit.joinVisitRoom(visitId, socket);
