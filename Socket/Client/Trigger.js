@@ -39,15 +39,20 @@ Trigger.prototype.showDisconnectPage = function (id, io) {
         if(hasSubject === '1') {
             SubjectModel.getAll().then((subjects) => {
                 Client.getClientRoom(id, io).emit('loadSubjects', subjects);
+                if(client.data.banned) {
+                    Client.getClientRoom(id, io).emit('clientDisconnectPage', false);
+                } else {
+                    Client.getClientRoom(id, io).emit('clientDisconnectPage', true);
+                }
             });
+        } else {
+            if(client.data.banned) {
+                Client.getClientRoom(id, io).emit('clientDisconnectPage', false);
+            } else {
+                Client.getClientRoom(id, io).emit('clientDisconnectPage', true);
+            }
         }
     });
-
-    if(client.data.banned) {
-        Client.getClientRoom(id, io).emit('clientDisconnectPage', false);
-    } else {
-        Client.getClientRoom(id, io).emit('clientDisconnectPage', true);
-    }
 };
 
 Trigger.prototype.showWaitPage = function (client, io) {

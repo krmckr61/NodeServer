@@ -2,7 +2,6 @@ let ClientModel = require('../Model/Client');
 let MessageModel = require('../Model/Message');
 let UserModel = require('../Model/User');
 let ClientInfo = require('../../Helpers/ClientInfo');
-let Defines = require('../../Helpers/Defines');
 let Visit = require('./VisitController');
 let VisitModel = require('../Model/Visit');
 
@@ -23,19 +22,26 @@ ClientController.add = async function (id, socket) {
                 this.removeDisconnectClient(id);
                 let client = this.get(id);
                 client.reconnect = true;
-                resolve(client);
+                ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
+                    if (isBanned) {
+                        this.clients[id].data.banned = true;
+                    } else {
+                        this.clients[id].data.banned = false;
+                    }
+                    resolve(this.get(id));
+                });
             } else {
                 console.log('a client connected from another tab : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os);
                 this.clients[id]['count'] += 1;
-                resolve(this.get(id));
+                ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
+                    if (isBanned) {
+                        this.clients[id].data.banned = true;
+                    } else {
+                        this.clients[id].data.banned = false;
+                    }
+                    resolve(this.get(id));
+                });
             }
-            ClientModel.hasBanned(id, data.ipAddress).then((isBanned) => {
-                if (!isBanned) {
-                    this.clients[id].banned = false;
-                } else {
-                    this.clients[id].banned = true;
-                }
-            });
         } else {
             ClientModel.getStatus(id).then((status) => {
                 ClientInfo.getInfo(socket).then((data) => {

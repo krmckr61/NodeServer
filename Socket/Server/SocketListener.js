@@ -176,9 +176,10 @@ SocketListener.prototype.watchChat = function (userId, clientId, socket, io) {
     });
 };
 
-SocketListener.prototype.disconnect = function (id, io) {
+SocketListener.prototype.disconnect = function (id, socket, io) {
     if (Server.get(id)) {
         if (Server.users[id].count === 1) {
+            Server.leaveRoomsOfUser(id, socket);
             Server.addDisconnectUser(id);
             setTimeout(() => {
                 if (Server.hasDisconnectUser(id)) {

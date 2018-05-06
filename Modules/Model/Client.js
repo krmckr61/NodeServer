@@ -142,7 +142,6 @@ Client.prototype.getVisitId = async function (id) {
                     resolve(false);
                 }
             } else {
-                console.log(err);
                 resolve(false);
             }
         });

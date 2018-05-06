@@ -84,6 +84,10 @@ ServerController.joinUserRoleRooms = async function (userId, socket) {
     });
 };
 
+ServerController.leaveRoomsOfUser = function (userId, socket) {
+    socket.leaveAll();
+};
+
 ServerController.getUserRoom = function (userId, io) {
     return io.to(this.userRoomNamePrefix + userId);
 };

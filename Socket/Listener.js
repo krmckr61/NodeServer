@@ -103,7 +103,7 @@ Listener.prototype.initSockets = function () {
             });
 
             socket.on('disconnect', () => {
-                ServerSocketListener.disconnect(id, this.io);
+                ServerSocketListener.disconnect(id, socket, this.io);
             });
 
         } else {
