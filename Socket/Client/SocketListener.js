@@ -37,6 +37,9 @@ SocketListener.prototype.clientLogin = function (id, data, socket, io) {
         console.log('a client login - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os);
         cli.login(id, data).then((visitId) => {
             if (visitId) {
+                // join visit room for other tabs
+                Trigger.joinVisitRoom(id, io);
+
                 Visit.joinVisitRoom(visitId, socket);
                 Client.setLoginData(id, data);
                 Client.setStatus(id, 1);
@@ -134,6 +137,19 @@ SocketListener.prototype.rateChat = async function (clientId, value, socket, io)
             }
         });
     });
+};
+
+SocketListener.prototype.joinVisitRoom = function (clientId, socket) {
+    let client = Client.get(clientId);
+    if(client) {
+        if(client.visitId) {
+            Visit.joinVisitRoom(client.visitId, socket);
+        } else {
+            VisitModel.getVisitIdFromClientId(clientId).then((visitId) => {
+                Visit.joinVisitRoom(visitId, socket);
+            })
+        }
+    }
 };
 
 module.exports = new SocketListener();

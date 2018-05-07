@@ -81,4 +81,8 @@ Trigger.prototype.rateChat = function (socket) {
     socket.emit('chatRated');
 };
 
+Trigger.prototype.joinVisitRoom = function (id, io) {
+    Client.getClientRoom(id, io).emit('joinVisitRoom');
+};
+
 module.exports = new Trigger();

@@ -130,6 +130,10 @@ Listener.prototype.initSockets = function () {
                 ClientSocketListener.disconnect(id, socket, this.io);
             });
 
+            socket.on('joinVisitRoom', () => {
+                ClientSocketListener.joinVisitRoom(id, socket);
+            });
+
         }
     });
 };
