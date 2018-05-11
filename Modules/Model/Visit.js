@@ -228,4 +228,24 @@ Visit.prototype.getDataFromId = async function (visitId) {
     });
 };
 
+Visit.prototype.hasCurrentVisit = async function (clientId) {
+    return new Promise((resolve) => {
+        db.query({
+            text: "SELECT id FROM visit WHERE visitorid=$1 AND active='1' AND status='1'",
+            values: [clientId]
+        }, (err, response) => {
+            if(!err) {
+                if(response.rows.length > 0) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            } else {
+                console.log(err);
+                resolve(false);
+            }
+        });
+    });
+};
+
 module.exports = new Visit();

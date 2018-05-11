@@ -24,41 +24,50 @@ SocketListener.prototype.connection = function (id, socket, io, reconnect = fals
 };
 
 SocketListener.prototype.clientLogin = function (id, data, socket, io) {
-    let cl = Client.get(id);
-    if (cl) {
-        data = Object.assign(data, cl.data);
-        if (data.SubjectId) {
-            SubjectModel.getNameFromId(data.subjectId).then((subjectName) => {
-                if (subjectName) {
-                    data.SubjectName = subjectName;
-                }
-            })
-        }
-        console.log('a client login - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os);
-        cli.login(id, data).then((visitId) => {
-            if (visitId) {
-                // join visit room for other tabs
-                Trigger.joinVisitRoom(id, io);
-
-                Visit.joinVisitRoom(visitId, socket);
-                Client.setLoginData(id, data);
-                Client.setStatus(id, 1);
-                MessageModel.addWelcomeMessage('waitingText', visitId).then((waitingText) => {
-                    Trigger.showWaitPage(Client.get(id), io);
-                });
-                if (cl.data.SubjectId) {
-                    Visit.autoTakeClient(Server.getAll(), id, io, Client.clients[id].data.SubjectId);
+    VisitModel.hasCurrentVisit(id).then((hasCurrentVisit) => {
+        if(!hasCurrentVisit) {
+            let cl = Client.get(id);
+            if (cl) {
+                data = Object.assign(data, cl.data);
+                console.log('a client login - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + ' - count : ' + cl.count + ' - subject : ' + data.SubjectId);
+                if (data.SubjectId) {
+                    SubjectModel.getNameFromId(data.subjectId).then((subjectName) => {
+                        if (subjectName) {
+                            data.SubjectName = subjectName;
+                            this.setClientLoginProperties(id, cl, data, socket, io);
+                        }
+                    });
                 } else {
-                    Visit.autoTakeClient(Server.getAll(), id, io);
+                    this.setClientLoginProperties(id, cl, data, socket, io);
                 }
-
             } else {
-                Trigger.throwClientError(id, 'Bağlantı hatası', io);
+                Trigger.throwClientError(id, 'Bağlantı hatası.', io);
             }
-        });
-    } else {
-        Trigger.throwClientError(id, 'Bağlantı hatası.', io);
-    }
+        }
+    });
+};
+
+SocketListener.prototype.setClientLoginProperties = function (id, cl, data, socket, io) {
+    cli.login(id, data).then((visitId) => {
+        if (visitId) {
+            // join visit room for other tabs
+            Trigger.joinVisitRoom(id, io);
+
+            Visit.joinVisitRoom(visitId, socket);
+            Client.setLoginData(id, data);
+            Client.setStatus(id, 1);
+            MessageModel.addWelcomeMessage('waitingText', visitId).then((waitingText) => {
+                Trigger.showWaitPage(Client.get(id), io);
+            });
+            if (cl.data.SubjectId) {
+                Visit.autoTakeClient(Server.getAll(), id, io, Client.clients[id].data.SubjectId);
+            } else {
+                Visit.autoTakeClient(Server.getAll(), id, io);
+            }
+        } else {
+            Trigger.throwClientError(id, 'Bağlantı hatası', io);
+        }
+    });
 };
 
 SocketListener.prototype.disconnect = function (clientId, socket, io) {
