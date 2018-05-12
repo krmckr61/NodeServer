@@ -31,7 +31,7 @@ SocketListener.prototype.clientLogin = function (id, data, socket, io) {
                 data = Object.assign(data, cl.data);
                 console.log('a client login - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + ' - count : ' + cl.count + ' - subject : ' + data.SubjectId);
                 if (data.SubjectId) {
-                    SubjectModel.getNameFromId(data.subjectId).then((subjectName) => {
+                    SubjectModel.getNameFromId(data.SubjectId).then((subjectName) => {
                         if (subjectName) {
                             data.SubjectName = subjectName;
                             this.setClientLoginProperties(id, cl, data, socket, io);
@@ -59,7 +59,7 @@ SocketListener.prototype.setClientLoginProperties = function (id, cl, data, sock
             MessageModel.addWelcomeMessage('waitingText', visitId).then((waitingText) => {
                 Trigger.showWaitPage(Client.get(id), io);
             });
-            if (cl.data.SubjectId) {
+            if (data.SubjectId) {
                 Visit.autoTakeClient(Server.getAll(), id, io, Client.clients[id].data.SubjectId);
             } else {
                 Visit.autoTakeClient(Server.getAll(), id, io);

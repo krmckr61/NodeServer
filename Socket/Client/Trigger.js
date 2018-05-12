@@ -9,6 +9,9 @@ let Trigger = function () {
 };
 
 Trigger.prototype.initClient = function (client, io) {
+
+    this.loadSubjects(client.id, io);
+
     if (client['status'] === 0) {
         this.showDisconnectPage(client.id, io);
     } else if (client['status'] === 1) {
@@ -20,6 +23,16 @@ Trigger.prototype.initClient = function (client, io) {
     if (client['count'] === 1 && !client.reconnect) {
         io.sockets.emit('newClient', client);
     }
+};
+
+Trigger.prototype.loadSubjects = function (id, io) {
+    ConfigModel.getValue('subject').then((hasSubject) => {
+        if(hasSubject === '1') {
+            SubjectModel.getAll().then((subjects) => {
+                Client.getClientRoom(id, io).emit('loadSubjects', subjects);
+            });
+        }
+    });
 };
 
 Trigger.prototype.loadMessages = function (clientId, io) {
@@ -35,24 +48,11 @@ Trigger.prototype.loadMessages = function (clientId, io) {
 Trigger.prototype.showDisconnectPage = function (id, io) {
     let client = Client.get(id);
 
-    ConfigModel.getValue('subject').then((hasSubject) => {
-        if(hasSubject === '1') {
-            SubjectModel.getAll().then((subjects) => {
-                Client.getClientRoom(id, io).emit('loadSubjects', subjects);
-                if(client.data.banned) {
-                    Client.getClientRoom(id, io).emit('clientDisconnectPage', false);
-                } else {
-                    Client.getClientRoom(id, io).emit('clientDisconnectPage', true);
-                }
-            });
-        } else {
-            if(client.data.banned) {
-                Client.getClientRoom(id, io).emit('clientDisconnectPage', false);
-            } else {
-                Client.getClientRoom(id, io).emit('clientDisconnectPage', true);
-            }
-        }
-    });
+    if(client.data.banned) {
+        Client.getClientRoom(id, io).emit('clientDisconnectPage', false);
+    } else {
+        Client.getClientRoom(id, io).emit('clientDisconnectPage', true);
+    }
 };
 
 Trigger.prototype.showWaitPage = function (client, io) {

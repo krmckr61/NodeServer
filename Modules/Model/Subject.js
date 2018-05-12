@@ -22,7 +22,7 @@ Subject.prototype.getAll = async function() {
 Subject.prototype.getNameFromId = async function(subjectId) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT name FROM subject id=$1",
+            text: "SELECT name FROM subject WHERE id=$1",
             values: [subjectId]
         }, (err, response) => {
             if(!err) {
