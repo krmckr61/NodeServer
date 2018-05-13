@@ -11,8 +11,8 @@ let SubjectModel = require('../../Modules/Model/Subject');
 SocketListener = function () {
 };
 
-SocketListener.prototype.connection = function (id, socket, io, reconnect = false) {
-    Client.add(id, socket).then((client) => {
+SocketListener.prototype.connection = function (id, socket, io, reconnect = false, count = 1) {
+    Client.add(id, socket, count).then((client) => {
         Client.initClientRooms(client, socket).then((res) => {
             if (!reconnect) {
                 Trigger.initClient(client, io);
@@ -25,7 +25,7 @@ SocketListener.prototype.connection = function (id, socket, io, reconnect = fals
 
 SocketListener.prototype.clientLogin = function (id, data, socket, io) {
     VisitModel.hasCurrentVisit(id).then((hasCurrentVisit) => {
-        if(!hasCurrentVisit) {
+        if (!hasCurrentVisit) {
             let cl = Client.get(id);
             if (cl) {
                 data = Object.assign(data, cl.data);
@@ -131,8 +131,9 @@ SocketListener.prototype.destroyChat = function (clientId, socket, io) {
 };
 
 SocketListener.prototype.reconnectClient = function (clientId, socket, io) {
+    let count = Client.clients[clientId].count;
     delete Client.clients[clientId];
-    this.connection(clientId, socket, io, true);
+    this.connection(clientId, socket, io, true, count);
     let client = Client.get(clientId);
 };
 
@@ -150,8 +151,8 @@ SocketListener.prototype.rateChat = async function (clientId, value, socket, io)
 
 SocketListener.prototype.joinVisitRoom = function (clientId, socket) {
     let client = Client.get(clientId);
-    if(client) {
-        if(client.visitId) {
+    if (client) {
+        if (client.visitId) {
             Visit.joinVisitRoom(client.visitId, socket);
         } else {
             VisitModel.getVisitIdFromClientId(clientId).then((visitId) => {

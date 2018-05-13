@@ -13,7 +13,7 @@ let ClientController = {
     reconnectTime: 2000
 };
 
-ClientController.add = async function (id, socket) {
+ClientController.add = async function (id, socket, count = 1) {
     return new Promise((resolve) => {
         if (this.has(id)) {
             if (this.hasDisconnectClient(id) && this.clients[id].count === 1) {
@@ -62,7 +62,7 @@ ClientController.add = async function (id, socket) {
                                             this.clients[id] = {
                                                 id: id,
                                                 status: status,
-                                                count: 1,
+                                                count: count,
                                                 data: data,
                                                 visitId: visitId,
                                                 users: users
@@ -72,7 +72,7 @@ ClientController.add = async function (id, socket) {
                                             this.clients[id] = {
                                                 id: id,
                                                 status: status,
-                                                count: 1,
+                                                count: count,
                                                 data: data,
                                                 visitId: visitId,
                                                 users: []
@@ -81,7 +81,7 @@ ClientController.add = async function (id, socket) {
                                     });
                                 });
                             } else {
-                                this.clients[id] = {id: id, status: status, count: 1, data: data, users: []};
+                                this.clients[id] = {id: id, status: status, count: count, data: data, users: []};
                                 resolve(this.get(id));
                             }
                         });
