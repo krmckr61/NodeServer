@@ -10,14 +10,14 @@ let VisitModel = require('../../Modules/Model/Visit');
 let Trigger = function () {
 };
 
-Trigger.prototype.initServer = function (id, users, socket, io) {
+Trigger.prototype.initServer = function (id, siteId, users, socket, io) {
     this.loadClients(id, socket);
     this.loadTalkingClients(id, socket);
-    this.loadUsers(id, io);
+    this.loadUsers(id, siteId, io);
     Visit.autoTakeClients(users, io);
 };
 
-Trigger.prototype.loadUsers = function (id, io) {
+Trigger.prototype.loadUsers = function (id, siteId, io) {
     if (Object.keys(Server.getAll()).length > 1) {
         UserModel.getOtherUsers(id, Server.getAll()).then((users) => {
             if (users) {
@@ -26,7 +26,7 @@ Trigger.prototype.loadUsers = function (id, io) {
         });
     }
     UserModel.getUser(id).then((user) => {
-        io.to('user').emit('newUser', user);
+        io.to('user' + siteId).emit('newUser', user);
     });
 };
 
@@ -69,9 +69,9 @@ Trigger.prototype.loadTalkingClients = function (id, socket) {
     });
 };
 
-Trigger.prototype.takeClient = function (clientId, userId, visitId, socket, io) {
+Trigger.prototype.takeClient = function (clientId, siteId, userId, visitId, socket, io) {
     ClientTrigger.showTalkPage(Client.get(clientId), io);
-    io.to('user').emit('takeClient', Client.get(clientId));
+    io.to('user' + siteId).emit('takeClient', Client.get(clientId));
 
     cli.getVisit(visitId).then((visit) => {
         Visit.getVisitRoom(visitId, io).emit('talkClient', visit);
@@ -96,7 +96,7 @@ Trigger.prototype.takeClient = function (clientId, userId, visitId, socket, io) 
 
 Trigger.prototype.takeNewClient = function (clientId, user, visitId, socket, io) {
     ClientTrigger.newUser(clientId, Client.get(clientId).users, io);
-    io.to('user').emit('takeClient', Client.get(clientId));
+    io.to('user' + user.siteId).emit('takeClient', Client.get(clientId));
     cli.getVisit(visitId).then((visit) => {
         Server.getUserRoom(user.id, io).emit('talkClient', visit);
         this.loadMessagesToUser(visitId, user.id, io);
@@ -120,7 +120,7 @@ Trigger.prototype.takeNewClient = function (clientId, user, visitId, socket, io)
 
 Trigger.prototype.leaveVisit = function (clientId, userId, visitId, socket, io) {
     ClientTrigger.newUser(clientId, Client.get(clientId).users, io);
-    io.to('user').emit('takeClient', Client.get(clientId));
+    io.to('user', Server.getSiteId(userId)).emit('takeClient', Client.get(clientId));
     cli.getVisit(visitId).then((visit) => {
         Server.getUserRoom(userId, io).emit('leaveVisit', visitId);
     });
@@ -163,7 +163,7 @@ Trigger.prototype.userConnect = function (id, io) {
 };
 
 Trigger.prototype.clientDisconnect = function (clientId, io) {
-    io.to('user').emit('disconnectClient', clientId);
+    io.to('user' + Client.getSiteId(clientId)).emit('disconnectClient', clientId);
 };
 
 Trigger.prototype.clientDisconnectChat = function (visitId, io) {
@@ -171,7 +171,7 @@ Trigger.prototype.clientDisconnectChat = function (visitId, io) {
 };
 
 Trigger.prototype.destroyChat = function (clientId, visitId, chatEndedMessage, io) {
-    io.to('user').emit('chatDestroyed', clientId);
+    io.to('user' + Client.getSiteId(clientId)).emit('chatDestroyed', clientId);
     Visit.getVisitRoom(visitId, io).emit('getMessage', chatEndedMessage);
     let client = Client.get(clientId);
     if(!client || client.data.banned === true) {
@@ -182,7 +182,7 @@ Trigger.prototype.destroyChat = function (clientId, visitId, chatEndedMessage, i
 };
 
 Trigger.prototype.userDisconnect = function (userId, io) {
-    io.to('user').emit('userDisconnect', userId);
+    io.to('user' + Server.getSiteId(userId)).emit('userDisconnect', userId);
 };
 
 Trigger.prototype.showInformation = function (message, socket) {

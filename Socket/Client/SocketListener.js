@@ -11,8 +11,8 @@ let SubjectModel = require('../../Modules/Model/Subject');
 SocketListener = function () {
 };
 
-SocketListener.prototype.connection = function (id, socket, io, reconnect = false, count = 1) {
-    Client.add(id, socket, count).then((client) => {
+SocketListener.prototype.connection = function (id, siteId, socket, io, reconnect = false, count = 1) {
+    Client.add(id, siteId, socket, count).then((client) => {
         Client.initClientRooms(client, socket).then((res) => {
             if (!reconnect) {
                 Trigger.initClient(client, io);
@@ -111,7 +111,7 @@ SocketListener.prototype.sendMessage = function (data, io) {
     }
 };
 
-SocketListener.prototype.destroyChat = function (clientId, socket, io) {
+SocketListener.prototype.destroyChat = function (clientId, siteId, socket, io) {
     let client = Client.get(clientId);
     if (client) {
         let visitId = client.visitId;
@@ -121,7 +121,6 @@ SocketListener.prototype.destroyChat = function (clientId, socket, io) {
                     Client.destroyChat(clientId);
                     ServerTrigger.destroyChat(clientId, visitId, message, io);
                     ServerTrigger.clientDisconnect(clientId, io);
-                    this.reconnectClient(clientId, socket, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     ServerTrigger.clientDisconnectChat(visitId, io);
                 });
@@ -130,11 +129,11 @@ SocketListener.prototype.destroyChat = function (clientId, socket, io) {
     }
 };
 
-SocketListener.prototype.reconnectClient = function (clientId, socket, io) {
-    let count = Client.clients[clientId].count;
-    delete Client.clients[clientId];
-    this.connection(clientId, socket, io, true, count);
+SocketListener.prototype.reconnectClient = function (clientId, siteId, socket, io) {
     let client = Client.get(clientId);
+    let count = client.count;
+    delete Client.clients[clientId];
+    this.connection(clientId, siteId, socket, io, true, count);
 };
 
 SocketListener.prototype.rateChat = async function (clientId, value, socket, io) {

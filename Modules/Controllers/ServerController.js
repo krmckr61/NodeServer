@@ -12,42 +12,42 @@ let ServerController = {
     reconnectTime: 2000
 };
 
-ServerController.add = async function (id, socket, io) {
+ServerController.add = async function (id, siteId, socket, io) {
     return new Promise((resolve) => {
         if (this.has(id)) {
             let hasDisconnectUser = false;
             if (this.hasDisconnectUser(id)) {
-                console.log('a user reloaded : ' + id);
+                console.log('a user reloaded : ' + id + ' - siteId : ' + siteId);
                 hasDisconnectUser = true;
                 this.removeDisconnectUser(id);
             } else {
-                console.log('a user connected from another tab : ' + id + ' - count : ' + this.users[id].count);
+                console.log('a user connected from another tab : ' + id + ' - site id : ' + siteId + ' - count : ' + this.users[id].count);
                 this.users[id].count++;
             }
             this.getUserRoom(id, io).emit('disconnectCurrentUsers');
             if(!hasDisconnectUser) {
                 setTimeout(() => {
-                    this.initUserRooms(id, socket);
+                    this.initUserRooms(id, siteId, socket);
                     resolve(true);
                 }, this.reconnectTime);
             } else {
-                this.initUserRooms(id, socket);
+                this.initUserRooms(id, siteId, socket);
                 resolve(true);
             }
         } else {
-            console.log('a user connected : ' + id);
-            this.initUserRooms(id, socket);
+            console.log('a user connected : ' + id + ' - siteId : ' + siteId);
+            this.initUserRooms(id, siteId, socket);
             UserModel.addLoginOnlineStatus(id).then((res) => {
-                this.users[id] = {id: id, count: 1, connectionDate: Helper.getCurrentTimeStamp()};
+                this.users[id] = {id: id, count: 1, connectionDate: Helper.getCurrentTimeStamp(), siteId: siteId};
                 resolve(true);
             });
         }
     });
 };
 
-ServerController.initUserRooms = function (userId, socket) {
+ServerController.initUserRooms = function (userId, siteId, socket) {
     //init user room
-    socket.join('user');
+    socket.join('user' + siteId);
     socket.join(this.userRoomNamePrefix + userId);
 
     this.joinUserVisitRooms(userId, socket).then((res) => {
@@ -160,6 +160,14 @@ ServerController.removeDisconnectUser = function (userId) {
 ServerController.takeClient = function (userId, visitId) {
     if (this.has(userId)) {
         this.users[userId].visits.push(visitId);
+    }
+};
+
+ServerController.getSiteId = function (userId) {
+    if(this.has(userId)) {
+        return this.get(userId).siteId;
+    } else {
+        return false;
     }
 };
 

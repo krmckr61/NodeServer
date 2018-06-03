@@ -13,11 +13,11 @@ let ClientController = {
     reconnectTime: 2000
 };
 
-ClientController.add = async function (id, socket, count = 1) {
+ClientController.add = async function (id, siteId, socket, count = 1) {
     return new Promise((resolve) => {
         if (this.has(id)) {
             if (this.hasDisconnectClient(id) && this.clients[id].count === 1) {
-                console.log('a client reloaded : - ip : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - count : ' + this.clients[id].count);
+                console.log('a client reloaded : - ip : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
                 this.removeDisconnectClient(id);
                 this.clients[id].reconnect = true;
                 ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
@@ -37,7 +37,7 @@ ClientController.add = async function (id, socket, count = 1) {
                     } else {
                         this.clients[id].data.banned = false;
                     }
-                    console.log('a client connected from another tab : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - count : ' + this.clients[id].count);
+                    console.log('a client connected from another tab : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
                     resolve(this.get(id));
                 });
             }
@@ -50,7 +50,7 @@ ClientController.add = async function (id, socket, count = 1) {
                         } else {
                             data.banned = false;
                         }
-                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + " - status : " + status +  " - count : " + 1);
+                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + ' - site : ' + siteId + " - status : " + status +  " - count : " + 1);
                         VisitModel.getVisitIdFromClientId(id).then((visitId) => {
                             if (visitId) {
                                 VisitModel.getDataFromId(visitId).then((visitData) => {
@@ -65,7 +65,8 @@ ClientController.add = async function (id, socket, count = 1) {
                                                 count: count,
                                                 data: data,
                                                 visitId: visitId,
-                                                users: users
+                                                users: users,
+                                                siteId: siteId
                                             };
                                             resolve(this.get(id));
                                         } else {
@@ -75,13 +76,14 @@ ClientController.add = async function (id, socket, count = 1) {
                                                 count: count,
                                                 data: data,
                                                 visitId: visitId,
-                                                users: []
+                                                users: [],
+                                                siteId: siteId
                                             };
                                         }
                                     });
                                 });
                             } else {
-                                this.clients[id] = {id: id, status: status, count: count, data: data, users: []};
+                                this.clients[id] = {id: id, status: status, count: count, data: data, users: [], siteId: siteId};
                                 resolve(this.get(id));
                             }
                         });
@@ -310,6 +312,14 @@ ClientController.setLoginData = function (id, data) {
 ClientController.destroyChat = function (clientId) {
     if (this.has(clientId)) {
         this.clients[clientId].disconnect = true;
+    }
+};
+
+ClientController.getSiteId = function (clientId) {
+    if(this.has(clientId)) {
+        return this.clients[clientId].siteId;
+    } else {
+        return false;
     }
 };
 

@@ -16,17 +16,17 @@ let Helper = require('../../Helpers/Helper');
 let SocketListener = function () {
 };
 
-SocketListener.prototype.connection = function (id, socket, io) {
-    Server.add(id, socket, io).then((res) => {
-        Trigger.initServer(id, Server.getAll(), socket, io);
+SocketListener.prototype.connection = function (id, siteId, socket, io) {
+    Server.add(id, siteId, socket, io).then((res) => {
+        Trigger.initServer(id, siteId, Server.getAll(), socket, io);
     });
 };
 
-SocketListener.prototype.takeClient = function (clientId, userId, socket, io) {
+SocketListener.prototype.takeClient = function (clientId, siteId, userId, socket, io) {
     UserModel.getOnlineStatus(userId).then((onlineStatus) => {
         if (onlineStatus == 1) {
             Client.takeClient(clientId, userId, socket, io).then((visitId) => {
-                Trigger.takeClient(clientId, userId, visitId, socket, io);
+                Trigger.takeClient(clientId, siteId, userId, visitId, socket, io);
             });
         } else {
             Trigger.showInformation('Müşteri alabilmek için durumunuzu çevrimiçi yapmalısınız.', socket);
@@ -79,7 +79,7 @@ SocketListener.prototype.sendPrivateMessage = function (userId, clientId, messag
     });
 };
 
-SocketListener.prototype.destroyChat = function (userId, visitId, socket, io) {
+SocketListener.prototype.destroyChat = function (userId, siteId, visitId, socket, io) {
     ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
         if (clientId) {
             MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
@@ -87,7 +87,7 @@ SocketListener.prototype.destroyChat = function (userId, visitId, socket, io) {
                     Client.destroyChat(clientId);
                     Trigger.destroyChat(clientId, visitId, message, io);
                     Trigger.clientDisconnect(clientId, io);
-                    ClientSocketController.reconnectClient(clientId, socket, io);
+                    // ClientSocketController.reconnectClient(clientId, siteId, socket, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     Trigger.clientDisconnectChat(visitId, io);
                 });
@@ -196,11 +196,11 @@ SocketListener.prototype.disconnect = function (id, socket, io) {
     }
 };
 
-SocketListener.prototype.setOnlineStatus = function (userId, onlineStatus, io) {
+SocketListener.prototype.setOnlineStatus = function (userId, siteId, onlineStatus, io) {
     UserModel.setOnlineStatus(userId, onlineStatus).then((createdAt) => {
         if (createdAt) {
             Server.getUserRoom(userId, io).emit('setOnlineStatus', onlineStatus);
-            io.to('user').emit('userSetStatus', {
+            io.to('user' + siteId).emit('userSetStatus', {
                 userId: userId,
                 onlineStatus: onlineStatus,
                 created_at: new Date(createdAt).toLocaleString()
@@ -242,11 +242,11 @@ SocketListener.prototype.logoutUserFromVisit = function (userId, visitId, socket
     });
 };
 
-SocketListener.prototype.banUser = function (userId, clientId, date, socket, io) {
+SocketListener.prototype.banUser = function (userId, siteId, clientId, date, socket, io) {
     let client = Client.get(clientId);
     if (client) {
         let ipAddress = client.data.ipAddress;
-        BannedUserModel.addBannedUser(userId, clientId, ipAddress, date).then((resp) => {
+        BannedUserModel.addBannedUser(userId, siteId, clientId, ipAddress, date).then((resp) => {
             if (resp) {
                 VisitModel.getVisitIdFromClientId(clientId).then((visitId) => {
                     MessageModel.addWelcomeMessage('clientBanned', visitId).then((message) => {
@@ -255,7 +255,7 @@ SocketListener.prototype.banUser = function (userId, clientId, date, socket, io)
                             Client.destroyChat(clientId);
                             Trigger.destroyChat(clientId, visitId, message, io);
                             Trigger.clientDisconnect(clientId, io);
-                            ClientSocketController.reconnectClient(clientId, socket, io);
+                            ClientSocketController.reconnectClient(clientId, siteId, socket, io);
                             Visit.autoTakeClients(Server.getAll(), io);
                             Trigger.clientDisconnectChat(visitId, io);
                         });

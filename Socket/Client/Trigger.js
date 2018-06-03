@@ -60,7 +60,7 @@ Trigger.prototype.showWaitPage = function (client, io) {
     this.loadMessages(client.id, io);
 
     if (client.count === 1 && !client.reconnect) {
-        io.to('user').emit('clientConnect', client);
+        io.to('user' + client.siteId).emit('clientConnect', client);
     }
 };
 
