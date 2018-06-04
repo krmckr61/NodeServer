@@ -1,8 +1,6 @@
 let ClientSocketListener = require('./Client/SocketListener');
 let ServerSocketListener = require('./Server/SocketListener');
 let Request = require('../Core/Request');
-let cookieParser = require('cookie-parser');
-let cors = require('cors');
 
 let Listener = function () {
     this.app;
@@ -13,7 +11,7 @@ let Listener = function () {
 
 Listener.prototype.init = function () {
     this.app = require('express')();
-    this.app.use(cors());
+
     this.http = require('http').Server(this.app);
     this.io = require('socket.io')(this.http);
 
