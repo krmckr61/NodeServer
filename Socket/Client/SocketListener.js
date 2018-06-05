@@ -81,13 +81,13 @@ SocketListener.prototype.disconnect = function (clientId, socket, io) {
                         if (typeof visitId === 'number') {
                             MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
                                 ServerTrigger.destroyChat(clientId, visitId, message, io);
-                                ServerTrigger.clientDisconnect(clientId, io);
+                                ServerTrigger.clientDisconnect(clientId, client.siteId, io);
                                 if (typeof visitId === 'number') {
                                     ServerTrigger.clientDisconnectChat(visitId, io);
                                 }
                             });
                         } else {
-                            ServerTrigger.clientDisconnect(clientId, io);
+                            ServerTrigger.clientDisconnect(clientId, client.siteId, io);
                         }
                     });
                 }
@@ -120,7 +120,7 @@ SocketListener.prototype.destroyChat = function (clientId, siteId, socket, io) {
                 VisitModel.destroyVisit(visitId, '2').then((destroy) => {
                     Client.destroyChat(clientId);
                     ServerTrigger.destroyChat(clientId, visitId, message, io);
-                    ServerTrigger.clientDisconnect(clientId, io);
+                    ServerTrigger.clientDisconnect(clientId, client.siteId, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     ServerTrigger.clientDisconnectChat(visitId, io);
                 });

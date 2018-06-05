@@ -82,16 +82,19 @@ SocketListener.prototype.sendPrivateMessage = function (userId, clientId, messag
 SocketListener.prototype.destroyChat = function (userId, siteId, visitId, socket, io) {
     ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
         if (clientId) {
-            MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
-                VisitModel.destroyVisit(visitId, '3', userId).then((destroy) => {
-                    Client.destroyChat(clientId);
-                    Trigger.destroyChat(clientId, visitId, message, io);
-                    Trigger.clientDisconnect(clientId, io);
-                    // ClientSocketController.reconnectClient(clientId, siteId, socket, io);
-                    Visit.autoTakeClients(Server.getAll(), io);
-                    Trigger.clientDisconnectChat(visitId, io);
+            let client = Client.get(clientId);
+            if(client) {
+                MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
+                    VisitModel.destroyVisit(visitId, '3', userId).then((destroy) => {
+                        Client.destroyChat(clientId);
+                        Trigger.destroyChat(clientId, visitId, message, io);
+                        Trigger.clientDisconnect(clientId, client.siteId, io);
+                        // ClientSocketController.reconnectClient(clientId, siteId, socket, io);
+                        Visit.autoTakeClients(Server.getAll(), io);
+                        Trigger.clientDisconnectChat(visitId, io);
+                    });
                 });
-            });
+            }
         }
     });
 };
@@ -254,7 +257,7 @@ SocketListener.prototype.banUser = function (userId, siteId, clientId, date, soc
                             Client.clients[clientId].data.banned = true;
                             Client.destroyChat(clientId);
                             Trigger.destroyChat(clientId, visitId, message, io);
-                            Trigger.clientDisconnect(clientId, io);
+                            Trigger.clientDisconnect(clientId, client.siteId, io);
                             ClientSocketController.reconnectClient(clientId, siteId, socket, io);
                             Visit.autoTakeClients(Server.getAll(), io);
                             Trigger.clientDisconnectChat(visitId, io);

@@ -162,8 +162,8 @@ Trigger.prototype.userConnect = function (id, io) {
     });
 };
 
-Trigger.prototype.clientDisconnect = function (clientId, io) {
-    io.to('user' + Client.getSiteId(clientId)).emit('disconnectClient', clientId);
+Trigger.prototype.clientDisconnect = function (clientId, siteId, io) {
+    io.to('user' + siteId).emit('disconnectClient', clientId);
 };
 
 Trigger.prototype.clientDisconnectChat = function (visitId, io) {
