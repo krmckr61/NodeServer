@@ -241,7 +241,6 @@ Visit.prototype.hasCurrentVisit = async function (clientId) {
                     resolve(false);
                 }
             } else {
-                console.log(err);
                 resolve(false);
             }
         });

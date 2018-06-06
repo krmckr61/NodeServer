@@ -29,7 +29,6 @@ ClientController.add = async function (id, siteId, socket, count = 1) {
                     resolve(this.get(id));
                 });
             } else {
-                console.log('test');
                 this.clients[id]['count'] += 1;
                 ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
                     if (isBanned) {
