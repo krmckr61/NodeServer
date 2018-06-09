@@ -9,7 +9,7 @@ ClientInfo.getInfo = async function (socket) {
         data.connectionTime = this.getDateInfo();
         let agent = useragent.parse(socket.request.headers['user-agent']).toString().split('/');
         data.device = {os: agent[1], browser: agent[0]};
-        if (socket.request.connection.remoteAddress) {
+        if (socket.conn.request && socket.conn.request.headers && socket.conn.request.headers['x-forwarded-for']) {
             data.ipAddress = socket.conn.request.headers['x-forwarded-for'];
         } else if(socket.request.connection.remoteAddress) {
             data.ipAddress = socket.request.connection.remoteAddress;
