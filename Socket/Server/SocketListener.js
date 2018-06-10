@@ -38,6 +38,7 @@ SocketListener.prototype.takeNewVisit = function (userId, givenUserId, visitId, 
     Client.takeNewClient(visitId, userId, socket, io).then((response) => {
         Trigger.sendMessage(response.message, socket, io);
         Visit.joinVisitRoom(visitId, socket);
+        response.user.siteId = Server.get(response.user.id).siteId;
         Trigger.takeNewClient(response.clientId, response.user, visitId, socket, io);
     });
 };

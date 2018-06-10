@@ -120,7 +120,7 @@ Trigger.prototype.takeNewClient = function (clientId, user, visitId, socket, io)
 
 Trigger.prototype.leaveVisit = function (clientId, userId, visitId, socket, io) {
     ClientTrigger.newUser(clientId, Client.get(clientId).users, io);
-    io.to('user', Server.getSiteId(userId)).emit('takeClient', Client.get(clientId));
+    io.to('user' + Server.getSiteId(userId)).emit('takeClient', Client.get(clientId));
     cli.getVisit(visitId).then((visit) => {
         Server.getUserRoom(userId, io).emit('leaveVisit', visitId);
     });
