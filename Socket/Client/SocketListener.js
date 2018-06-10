@@ -56,6 +56,7 @@ SocketListener.prototype.setClientLoginProperties = function (id, cl, data, sock
             Visit.joinVisitRoom(visitId, socket);
             Client.setLoginData(id, data);
             Client.setStatus(id, 1);
+            Client.clients[id].visitId = visitId;
             MessageModel.addWelcomeMessage('waitingText', visitId).then((waitingText) => {
                 Trigger.showWaitPage(Client.get(id), io);
             });
