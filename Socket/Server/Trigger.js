@@ -167,7 +167,9 @@ Trigger.prototype.clientDisconnect = function (clientId, siteId, io) {
 };
 
 Trigger.prototype.clientDisconnectChat = function (visitId, io) {
-    Visit.getVisitRoom(visitId, io).emit('clientDisconnectChat', visitId);
+    cli.getClientIdFromVisitId(visitId).then((clientId) => {
+        Client.getClientRoom(clientId, io).emit('clientDisconnectChat', clientId);
+    });
 };
 
 Trigger.prototype.destroyChat = function (clientId, visitId, chatEndedMessage, io) {
