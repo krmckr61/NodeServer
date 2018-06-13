@@ -11,21 +11,20 @@ ClientInfo.getInfo = async function (socket) {
         data.device = {os: agent[1], browser: agent[0]};
         if (socket.conn.request && socket.conn.request.headers && socket.conn.request.headers['x-forwarded-for']) {
             data.ipAddress = socket.conn.request.headers['x-forwarded-for'];
-        } else if(socket.request.connection.remoteAddress) {
+        } else if (socket.request.connection.remoteAddress) {
             data.ipAddress = socket.request.connection.remoteAddress;
         }
-
-        if (data.ipAddress) {
-            if(data.ipAddress === '127.0.0.1' || data.ipAddress === '::ffff:127.0.0.1' || data.ipAddress === '::1') {
-                data.ipAddress = '167.99.135.47';
-            }
-            this.getLocationInfo(data.ipAddress).then((location) => {
-                if (location) {
-                    data.location = location;
-                }
-                resolve(data);
-            });
+        if (data.ipAddress === '127.0.0.1' || data.ipAddress === '::ffff:127.0.0.1' || data.ipAddress === '::1' || !data.ipAddress) {
+            data.ipAddress = '167.99.135.47';
         }
+        this.getLocationInfo(data.ipAddress).then((location) => {
+            if (location) {
+                data.location = location;
+            } else {
+                console.log('client location not found : ' + data.ipAddress);
+            }
+            resolve(data);
+        });
     });
 };
 
@@ -47,7 +46,13 @@ ClientInfo.getLocationInfo = async function (ip) {
 
 ClientInfo.getDateInfo = function () {
     let date = new Date();
-    return {year : date.getFullYear(), month: date.getMonth() + 1, day: date.getDate(), hour: date.getHours(), minute: date.getMinutes()};
+    return {
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
+        day: date.getDate(),
+        hour: date.getHours(),
+        minute: date.getMinutes()
+    };
 };
 
 module.exports = ClientInfo;
