@@ -311,6 +311,8 @@ ClientController.setLoginData = function (id, data) {
 ClientController.destroyChat = function (clientId) {
     if (this.has(clientId)) {
         this.clients[clientId].disconnect = true;
+        this.clients[clientId].status = 0;
+        this.clients[clientId].users = [];
     }
 };
 
