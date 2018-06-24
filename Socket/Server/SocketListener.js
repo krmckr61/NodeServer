@@ -116,7 +116,14 @@ SocketListener.prototype.getHistoryChat = function (id, socket) {
     ClientModel.getHistoryVisit(id).then((visit) => {
         if (visit) {
             VisitModel.getUsersFromVisit(id).then((users) => {
-                visit.users = users;
+                if(users.length > 0) {
+                    visit.users = {};
+                    users.forEach((user) => {
+                        visit.users[user.id] = user.name;
+                    });
+                } else {
+                    visit.users = users;
+                }
 
                 socket.emit('takeHistoryChat', visit);
                 MessageModel.getHistoryMessages(id).then((rows) => {
