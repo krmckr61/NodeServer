@@ -19,7 +19,9 @@ ClientController.add = async function (id, siteId, socket, count = 1) {
             if (this.hasDisconnectClient(id) && this.clients[id].count === 1) {
                 console.log('a client reloaded : - ip : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
                 this.removeDisconnectClient(id);
-                this.clients[id].reconnect = true;
+                if(this.clients[id].visitId) {
+                    this.clients[id].reconnect = true;
+                }
                 ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
                     if (isBanned) {
                         this.clients[id].data.banned = true;

@@ -20,7 +20,7 @@ Trigger.prototype.initClient = function (client, io) {
         this.showTalkPage(client, io);
     }
 
-    if (client['count'] === 1 && !client.reconnect) {
+    if (!client.reconnect) {
         io.sockets.emit('newClient', client);
     }
 };
@@ -59,7 +59,7 @@ Trigger.prototype.showWaitPage = function (client, io) {
     Client.getClientRoom(client.id, io).emit('clientWaitPage');
     this.loadMessages(client.id, io);
 
-    if (client.count === 1 && !client.reconnect) {
+    if (!client.reconnect) {
         io.to('user' + client.siteId).emit('clientConnect', client);
     }
 };
