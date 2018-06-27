@@ -14,26 +14,26 @@ Client.prototype.getStatus = async function (id) {
             values: [id]
         }, (err, response) => {
             if (!err) {
-                let data = {status: 0};
+                let resp = {status: 0};
                 if (response.rows.length > 0) {
-                    data = {status: 1, visitId: response.rows[0].id};
+                    resp = {status: 1, visitId: response.rows[0].id};
                     VisitModel.getUsersFromVisit(response.rows[0].id).then((users) => {
-                        VisitModel.getDataFromId((data.visitId)).then((data) => {
+                        VisitModel.getDataFromId((resp.visitId)).then((data) => {
                             if (users) {
-                                data.status = 2;
-                                data.users = users;
+                                resp.status = 2;
+                                resp.users = users;
                             }
                             if (data) {
-                                data.data = data;
+                                resp.data = data;
                             }
-                            resolve(data);
+                            resolve(resp);
                         });
                     });
                 } else {
-                    resolve(data);
+                    resolve(resp);
                 }
             } else {
-                resolve(data);
+                resolve(resp);
             }
         });
     });

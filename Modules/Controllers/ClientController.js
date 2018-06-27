@@ -51,7 +51,7 @@ ClientController.createClient = async function (clientId, siteId, socket) {
         //create client with pre infos
         this.addClientWithPreInfo(clientId, siteId, socket);
         //set client infos
-        resolve(this.setClientEntranceDatas(this.clients[clientId]));
+        resolve(this.setClientEntranceProperties(this.clients[clientId]));
     });
 };
 
@@ -59,12 +59,17 @@ ClientController.addClientWithPreInfo = function (id, siteId, socket, count = 1)
     this.clients[id] = {id: id, siteId: siteId, count: count, data: ClientInfo.getPreInfo(socket)};
 };
 
-ClientController.setClientEntranceDatas = async function (client) {
+ClientController.setClientEntranceProperties = async function (client) {
     return new Promise((resolve) => {
         ClientInfo.getClientProperties(client.id, client.siteId, client.data['ipAddress']).then((properties) => {
             client.data.location = properties.location;
-            client.data.banned = properties.banned;
+            if(properties.status.data) {
+                let data = properties.status.data;
+                delete properties.status.data;
+                client.data = data;
+            }
             client = Object.assign(client, properties.status);
+            client.data.banned = properties.banned;
             resolve(client);
         });
     });
@@ -80,6 +85,81 @@ ClientController.initClientRooms = async function (client, socket) {
             });
         } else {
             resolve(true);
+        }
+    });
+};
+
+ClientController.delete = async function (clientId) {
+    return new Promise((resolve) => {
+        let client = this.clients[clientId];
+        if (client.count === 1) {
+            resolve(this.deleteClientAfterRCTime(client));
+        } else {
+            resolve(this.ejectClient(client));
+        }
+    });
+};
+
+ClientController.deleteClientAfterRCTime = async function (client) {
+    return new Promise((resolve) => {
+        this.addDisconnectClient(client.id);
+        setTimeout(() => {
+            if(this.hasDisconnectClient(client.id)) {
+                resolve(this.deleteClient(client));
+                this.removeDisconnectClient(client.id);
+            } else {
+                resolve(false);
+            }
+        }, this.reconnectTime);
+    });
+};
+
+ClientController.deleteClient = async function (client) {
+    return new Promise((resolve) => {
+        console.log('a client disconnected : ' + client.id + ' - siteId : ' + client.siteId);
+        delete this.clients[client.id];
+        if(client.visitId && client.status !== 0) {
+            let visitId = client.visitId;
+            ClientModel.logout(visitId).then((response) => {
+                resolve(visitId);
+            });
+        } else {
+            resolve(true);
+        }
+    });
+};
+
+ClientController.ejectClient = function (client) {
+    client.count--;
+    console.log('a client disconnected from another tab : ' + client.id + ' - siteId : ' + client.siteId + ' - count : ' + client.count);
+    return false;
+};
+
+
+ClientController.remove = async function (clientId, io) {
+    return new Promise((resolve) => {
+        if (this.has(clientId)) {
+            if (this.clients[clientId]['count'] === 1) {
+                ClientModel.getStatus(clientId).then((status) => {
+                    delete this.clients[clientId];
+                    if (status.status !== 0) {
+                        ClientModel.getVisitId(clientId).then((visitId) => {
+                            ClientModel.logout(visitId).then((response) => {
+                                resolve(visitId);
+                            });
+                        });
+                    } else {
+                        resolve(true);
+                    }
+                });
+                console.log('a client disconnected');
+            } else {
+                console.log('a client disconnected from another tab');
+                this.clients[clientId]['count'] -= 1;
+                resolve(false);
+            }
+        } else {
+            resolve(false);
         }
     });
 };
@@ -185,34 +265,6 @@ ClientController.getMinimize = function (id) {
     }
 };
 
-ClientController.remove = async function (clientId, io) {
-    return new Promise((resolve) => {
-        if (this.has(clientId)) {
-            if (this.clients[clientId]['count'] === 1) {
-                ClientModel.getStatus(clientId).then((status) => {
-                    delete this.clients[clientId];
-                    if (status.status !== 0) {
-                        ClientModel.getVisitId(clientId).then((visitId) => {
-                            ClientModel.logout(visitId).then((response) => {
-                                resolve(visitId);
-                            });
-                        });
-                    } else {
-                        resolve(true);
-                    }
-                });
-                console.log('a client disconnected');
-            } else {
-                console.log('a client disconnected from another tab');
-                this.clients[clientId]['count'] -= 1;
-                resolve(false);
-            }
-        } else {
-            resolve(false);
-        }
-    });
-};
-
 ClientController.addDisconnectClient = function (clientId) {
     this.disconnects[clientId] = true;
 };
@@ -290,6 +342,7 @@ ClientController.destroyChat = function (clientId) {
         this.clients[clientId].disconnect = true;
         this.clients[clientId].status = 0;
         this.clients[clientId].users = [];
+        delete this.clients[clientId].visitId;
     }
 };
 

@@ -62,7 +62,7 @@ Listener.prototype.onClientConnection = function (id, siteId, socket) {
     });
 
     socket.on('disconnect', () => {
-        ClientSocketListener.disconnect(id, socket, this.io);
+        ClientSocketListener.disconnect(id, siteId, socket, this.io);
     });
 
     socket.on('reconnectClient', () => {

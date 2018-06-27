@@ -71,7 +71,24 @@ SocketListener.prototype.setClientLoginProperties = function (id, cl, data, sock
     });
 };
 
-SocketListener.prototype.disconnect = function (clientId, socket, io) {
+SocketListener.prototype.disconnect = function (clientId, siteId, socket, io) {
+    let client = Client.get(clientId);
+    Client.delete(client.id, socket, io).then((visitId) => {
+        if (typeof visitId === 'number') {
+            //if the client has a chat
+            MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
+                ServerTrigger.destroyChat(clientId, visitId, message, io);
+                ServerTrigger.clientDisconnect(clientId, client.siteId, io);
+                ServerTrigger.clientDisconnectChat(visitId, io);
+            });
+        } else if(visitId) {
+            //if the client does'nt have a chat
+            ServerTrigger.clientDisconnect(clientId, client.siteId, io);
+        }
+    });
+};
+
+SocketListener.prototype.disconnectOld = function (clientId, socket, io) {
     let client = Client.get(clientId);
     if (client) {
         if (client.count === 1) {
@@ -124,6 +141,7 @@ SocketListener.prototype.destroyChat = function (clientId, siteId, socket, io) {
                     ServerTrigger.clientDisconnect(clientId, client.siteId, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     ServerTrigger.clientDisconnectChat(visitId, io);
+                    io.sockets.emit('newClient', client);
                 });
             });
         }
