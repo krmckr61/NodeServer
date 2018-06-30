@@ -56,7 +56,7 @@ ClientController.createClient = async function (clientId, siteId, socket) {
 };
 
 ClientController.addClientWithPreInfo = function (id, siteId, socket, count = 1) {
-    this.clients[id] = {id: id, siteId: siteId, count: count, data: ClientInfo.getPreInfo(socket)};
+    this.clients[id] = {id: id, siteId: siteId, count: count, data: ClientInfo.getPreInfo(socket), status: 0};
 };
 
 ClientController.setClientEntranceProperties = async function (client) {
