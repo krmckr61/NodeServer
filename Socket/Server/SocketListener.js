@@ -85,7 +85,7 @@ SocketListener.prototype.destroyChat = function (userId, siteId, visitId, socket
         if (clientId) {
             let client = Client.get(clientId);
             if(client) {
-                MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
+                MessageModel.addWelcomeMessage('chatEndedByStaff', visitId).then((message) => {
                     VisitModel.destroyVisit(visitId, '3', userId).then((destroy) => {
                         Client.destroyChat(clientId);
                         Trigger.destroyChat(clientId, visitId, message, io);
