@@ -10,7 +10,7 @@ let ClientController = {
     disconnects: {},
     clientStatus: ['disconnect', 'wait', 'talk'],
     clientRoomNamePrefix: 'client-',
-    reconnectTime: 2000
+    reconnectTime: 4000
 };
 
 
