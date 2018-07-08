@@ -125,7 +125,7 @@ ClientController.takeClient = async function (clientId, userId, socket, io) {
                             this.clients[clientId].visitId = visitId;
                             ClientModel.addOperator(visitId, userId).then((add) => {
                                 if (add) {
-                                    delete this.clients[clientId].taken;
+                                    // delete this.clients[clientId].taken;
                                     Visit.joinVisitRoom(visitId, socket);
                                     this.setStatus(clientId, 2);
                                     MessageModel.addWelcomeMessage('clientTaken', visitId).then((welcomeMessage) => {
