@@ -116,7 +116,7 @@ ClientController.getClientRoom = function (clientId, io) {
 ClientController.takeClient = async function (clientId, userId, socket, io) {
     return new Promise((resolve) => {
         ClientModel.hasOperator(clientId).then((hasOperator) => {
-            if (!hasOperator && typeof this.clients[clientId].taken === 'undefined') {
+            if (!hasOperator && (this.clients[clientId] && typeof this.clients[clientId].taken === 'undefined')) {
                 this.clients[clientId].taken = true;
                 ClientModel.getVisitId(clientId).then((visitId) => {
                     if (visitId) {
