@@ -117,6 +117,7 @@ ClientController.takeClient = async function (clientId, userId, socket, io) {
     return new Promise((resolve) => {
         ClientModel.hasOperator(clientId).then((hasOperator) => {
             if (!hasOperator && !this.clients[clientId].taken) {
+                console.log(this.clients[clientId].taken);
                 this.clients[clientId].taken = true;
                 ClientModel.getVisitId(clientId).then((visitId) => {
                     if (visitId) {
