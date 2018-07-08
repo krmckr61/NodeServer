@@ -22,11 +22,11 @@ SocketListener.prototype.connection = function (id, siteId, socket, io) {
     });
 };
 
-SocketListener.prototype.takeClient = function (clientId, siteId, userId, socket, io) {
+SocketListener.prototype.takeClient = function (clientId, siteId, userId, socket, io, auto = false) {
     UserModel.getOnlineStatus(userId).then((onlineStatus) => {
         if (onlineStatus == 1) {
             Client.takeClient(clientId, userId, socket, io).then((visitId) => {
-                Trigger.takeClient(clientId, siteId, userId, visitId, socket, io);
+                Trigger.takeClient(clientId, siteId, userId, visitId, socket, io, auto);
             });
         } else {
             Trigger.showInformation('Müşteri alabilmek için durumunuzu çevrimiçi yapmalısınız.', socket);

@@ -69,11 +69,14 @@ Trigger.prototype.loadTalkingClients = function (id, socket) {
     });
 };
 
-Trigger.prototype.takeClient = function (clientId, siteId, userId, visitId, socket, io) {
+Trigger.prototype.takeClient = function (clientId, siteId, userId, visitId, socket, io, auto = false) {
     ClientTrigger.showTalkPage(Client.get(clientId), io);
     io.to('user' + siteId).emit('takeClient', Client.get(clientId));
 
     cli.getVisit(visitId).then((visit) => {
+        if (auto) {
+            visit.autoTake = true;
+        }
         Visit.getVisitRoom(visitId, io).emit('talkClient', visit);
         this.loadMessagesToUser(visitId, userId, io);
 
@@ -174,7 +177,7 @@ Trigger.prototype.destroyChat = function (clientId, visitId, chatEndedMessage, i
     io.to('user' + Client.getSiteId(clientId)).emit('chatDestroyed', clientId);
     Visit.getVisitRoom(visitId, io).emit('getMessage', chatEndedMessage);
     let client = Client.get(clientId);
-    if(!client || client.data.banned === true) {
+    if (!client || client.data.banned === true) {
         Client.getClientRoom(clientId, io).emit('destroyClient', false);
     } else {
         Client.getClientRoom(clientId, io).emit('destroyClient', true);

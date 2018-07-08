@@ -80,7 +80,7 @@ SocketListener.prototype.disconnect = function (clientId, socket, io) {
                 if (Client.hasDisconnectClient(clientId)) {
                     Client.remove(clientId, io).then((visitId) => {
                         if (typeof visitId === 'number') {
-                            MessageModel.addWelcomeMessage('chatEnded', visitId).then((message) => {
+                            MessageModel.addWelcomeMessage('chatEndedByClient', visitId).then((message) => {
                                 ServerTrigger.destroyChat(clientId, visitId, message, io);
                                 ServerTrigger.clientDisconnect(clientId, client.siteId, io);
                                 if (typeof visitId === 'number') {
@@ -122,6 +122,7 @@ SocketListener.prototype.destroyChat = function (clientId, siteId, socket, io) {
                     Client.destroyChat(clientId);
                     ServerTrigger.destroyChat(clientId, visitId, message, io);
                     ServerTrigger.clientDisconnect(clientId, client.siteId, io);
+                    this.reconnectClient(clientId, siteId, socket, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     ServerTrigger.clientDisconnectChat(visitId, io);
                 });

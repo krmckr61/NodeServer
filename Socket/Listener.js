@@ -78,6 +78,10 @@ Listener.prototype.onUserConnection = function (id, siteId, socket) {
         ServerSocketListener.takeClient(clientId, siteId, id, socket, this.io);
     });
 
+    socket.on('autoTakeClient', (clientId) => {
+        ServerSocketListener.takeClient(clientId, siteId, id, socket, this.io, true);
+    });
+
     socket.on('sendMessage', (data) => {
         ServerSocketListener.sendMessage(id, data, socket, this.io);
     });
