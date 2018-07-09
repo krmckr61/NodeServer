@@ -344,7 +344,6 @@ ClientController.addWriter = async function (visitId, userId) {
     return new Promise((resolve) => {
         ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
             if (this.has(clientId) && typeof this.clients[clientId].writer[userId] === 'undefined') {
-                console.log(111);
                 UserModel.getName(userId).then((name) => {
                     this.clients[clientId].writer[userId] = name;
                     resolve(this.clients[clientId].writer);
