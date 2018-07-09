@@ -116,7 +116,7 @@ ClientController.getClientRoom = function (clientId, io) {
 ClientController.takeClient = async function (clientId, userId, socket, io) {
     return new Promise((resolve) => {
         ClientModel.hasOperator(clientId).then((hasOperator) => {
-            if (!hasOperator && this.clients[clientId].taken === 'undefined') {
+            if (!hasOperator && (typeof this.clients[clientId].taken === 'undefined')) {
                 this.clients[clientId].taken = true;
                 ClientModel.getVisitId(clientId).then((visitId) => {
                     if (visitId) {
@@ -124,7 +124,7 @@ ClientController.takeClient = async function (clientId, userId, socket, io) {
                             this.clients[clientId].visitId = visitId;
                             ClientModel.addOperator(visitId, userId).then((add) => {
                                 if (add) {
-                                    setTimeout(() => { delete this.clients[clientId].taken });
+                                    setTimeout(() => { delete this.clients[clientId].taken }, 500);
                                     Visit.joinVisitRoom(visitId, socket);
                                     this.setStatus(clientId, 2);
                                     MessageModel.addWelcomeMessage('clientTaken', visitId).then((welcomeMessage) => {
