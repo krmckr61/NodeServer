@@ -79,6 +79,7 @@ Listener.prototype.onUserConnection = function (id, siteId, socket) {
     });
 
     socket.on('autoTakeClient', (clientId) => {
+        console.log(clientId);
         ServerSocketListener.takeClient(clientId, siteId, id, socket, this.io, true);
     });
 
