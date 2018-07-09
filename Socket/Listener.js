@@ -79,7 +79,6 @@ Listener.prototype.onUserConnection = function (id, siteId, socket) {
     });
 
     socket.on('autoTakeClient', (clientId) => {
-        console.log(clientId);
         ServerSocketListener.takeClient(clientId, siteId, id, socket, this.io, true);
     });
 
@@ -153,6 +152,14 @@ Listener.prototype.onUserConnection = function (id, siteId, socket) {
 
     socket.on('disconnect', () => {
         ServerSocketListener.disconnect(id, socket, this.io);
+    });
+
+    socket.on('writing', (visitId) => {
+        ServerSocketListener.writing(id, visitId, this.io);
+    });
+
+    socket.on('notWriting', (visitId) => {
+        ServerSocketListener.notWriting(id, visitId, this.io);
     });
 };
 

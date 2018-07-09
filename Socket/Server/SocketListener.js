@@ -286,4 +286,16 @@ SocketListener.prototype.logoutRoom = function (visitId, socket) {
     Visit.leaveVisitRoom(visitId, socket);
 };
 
+SocketListener.prototype.notWriting = function (userId, visitId, io) {
+    Client.removeWriter(visitId, userId).then((writers) => {
+        Visit.getVisitRoom(visitId, io).emit('setWriters', writers);
+    });
+};
+
+SocketListener.prototype.writing = function (userId, visitId, io) {
+    Client.addWriter(visitId, userId).then((writers) => {
+        Visit.getVisitRoom(visitId, io).emit('setWriters', writers);
+    });
+};
+
 module.exports = new SocketListener();

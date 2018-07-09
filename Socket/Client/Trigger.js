@@ -20,9 +20,15 @@ Trigger.prototype.initClient = function (client, io) {
         this.showTalkPage(client, io);
     }
 
+    this.setWriters(client, io);
+
     if (!client.reconnect) {
         io.sockets.emit('newClient', client);
     }
+};
+
+Trigger.prototype.setWriters = function(client, io) {
+    Client.getClientRoom(client.id, io).emit('setWriters', client.writer);
 };
 
 Trigger.prototype.loadSubjects = function (id, io) {

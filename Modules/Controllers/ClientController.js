@@ -19,7 +19,7 @@ ClientController.add = async function (id, siteId, socket, count = 1) {
             if (this.hasDisconnectClient(id) && this.clients[id].count === 1) {
                 console.log('a client reloaded : - ip : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
                 this.removeDisconnectClient(id);
-                if(this.clients[id].visitId) {
+                if (this.clients[id].visitId) {
                     this.clients[id].reconnect = true;
                 }
                 ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
@@ -51,11 +51,11 @@ ClientController.add = async function (id, siteId, socket, count = 1) {
                         } else {
                             data.banned = false;
                         }
-                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + ' - site : ' + siteId + " - status : " + status +  " - count : " + 1);
+                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + ' - site : ' + siteId + " - status : " + status + " - count : " + 1);
                         VisitModel.getVisitIdFromClientId(id).then((visitId) => {
                             if (visitId) {
                                 VisitModel.getDataFromId(visitId).then((visitData) => {
-                                    if(visitData) {
+                                    if (visitData) {
                                         data = Object.assign(data, visitData);
                                     }
                                     VisitModel.getUsersFromVisit(visitId).then((users) => {
@@ -67,7 +67,8 @@ ClientController.add = async function (id, siteId, socket, count = 1) {
                                                 data: data,
                                                 visitId: visitId,
                                                 users: users,
-                                                siteId: siteId
+                                                siteId: siteId,
+                                                writer: {}
                                             };
                                             resolve(this.get(id));
                                         } else {
@@ -78,13 +79,22 @@ ClientController.add = async function (id, siteId, socket, count = 1) {
                                                 data: data,
                                                 visitId: visitId,
                                                 users: [],
-                                                siteId: siteId
+                                                siteId: siteId,
+                                                writer: {}
                                             };
                                         }
                                     });
                                 });
                             } else {
-                                this.clients[id] = {id: id, status: status, count: count, data: data, users: [], siteId: siteId};
+                                this.clients[id] = {
+                                    id: id,
+                                    status: status,
+                                    count: count,
+                                    data: data,
+                                    users: [],
+                                    siteId: siteId,
+                                    writer: {}
+                                };
                                 resolve(this.get(id));
                             }
                         });
@@ -124,7 +134,9 @@ ClientController.takeClient = async function (clientId, userId, socket, io) {
                             this.clients[clientId].visitId = visitId;
                             ClientModel.addOperator(visitId, userId).then((add) => {
                                 if (add) {
-                                    setTimeout(() => { delete this.clients[clientId].taken }, 500);
+                                    setTimeout(() => {
+                                        delete this.clients[clientId].taken
+                                    }, 500);
                                     Visit.joinVisitRoom(visitId, socket);
                                     this.setStatus(clientId, 2);
                                     MessageModel.addWelcomeMessage('clientTaken', visitId).then((welcomeMessage) => {
@@ -321,11 +333,40 @@ ClientController.destroyChat = function (clientId) {
 };
 
 ClientController.getSiteId = function (clientId) {
-    if(this.has(clientId)) {
+    if (this.has(clientId)) {
         return this.clients[clientId].siteId;
     } else {
         return false;
     }
+};
+
+ClientController.addWriter = async function (visitId, userId) {
+    return new Promise((resolve) => {
+        ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
+            if (this.has(clientId) && typeof this.clients[clientId].writer[userId] === 'undefined') {
+                console.log(111);
+                UserModel.getName(userId).then((name) => {
+                    this.clients[clientId].writer[userId] = name;
+                    resolve(this.clients[clientId].writer);
+                });
+            } else {
+                resolve(false);
+            }
+        });
+    });
+};
+
+ClientController.removeWriter = async function (visitId, userId) {
+    return new Promise((resolve) => {
+        ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
+            if (this.has(clientId) && typeof this.clients[clientId].writer[userId] !== 'undefined') {
+                delete this.clients[clientId].writer[userId];
+                resolve(this.clients[clientId].writer);
+            } else {
+                resolve(false);
+            }
+        });
+    });
 };
 
 module.exports = ClientController;

@@ -122,7 +122,7 @@ SocketListener.prototype.destroyChat = function (clientId, siteId, socket, io) {
                     Client.destroyChat(clientId);
                     ServerTrigger.destroyChat(clientId, visitId, message, io);
                     ServerTrigger.clientDisconnect(clientId, client.siteId, io);
-                    this.reconnectClient(clientId, siteId, socket, io);
+                    // this.reconnectClient(clientId, siteId, socket, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     ServerTrigger.clientDisconnectChat(visitId, io);
                 });
