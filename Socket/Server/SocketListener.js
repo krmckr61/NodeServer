@@ -93,6 +93,7 @@ SocketListener.prototype.destroyChat = function (userId, siteId, visitId, socket
                         // ClientSocketController.reconnectClient(clientId, siteId, socket, io);
                         Visit.autoTakeClients(Server.getAll(), io);
                         Trigger.clientDisconnectChat(visitId, io);
+                        io.sockets.emit('newClient', client);
                     });
                 });
             }

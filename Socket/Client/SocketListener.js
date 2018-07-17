@@ -11,13 +11,13 @@ let SubjectModel = require('../../Modules/Model/Subject');
 SocketListener = function () {
 };
 
-SocketListener.prototype.connection = function (id, siteId, socket, io, reconnect = false, count = 1) {
-    Client.add(id, siteId, socket, count).then((client) => {
+SocketListener.prototype.connection = function (id, siteId, socket, io, reconnect = false) {
+    Client.add(id, siteId, socket).then((client) => {
         Client.initClientRooms(client, socket).then((res) => {
             if (!reconnect) {
                 Trigger.initClient(client, io);
             } else {
-                io.sockets.emit('newClient', client);
+                Server.getSiteRoom(siteId, io).emit('newClient', client);
             }
         });
     });
@@ -74,28 +74,28 @@ SocketListener.prototype.setClientLoginProperties = function (id, cl, data, sock
 SocketListener.prototype.disconnect = function (clientId, socket, io) {
     let client = Client.get(clientId);
     if (client) {
-        if (client.count === 1) {
-            Client.addDisconnectClient(clientId);
-            setTimeout(() => {
-                if (Client.hasDisconnectClient(clientId)) {
-                    Client.remove(clientId, io).then((visitId) => {
-                        if (typeof visitId === 'number') {
-                            MessageModel.addWelcomeMessage('chatEndedByClient', visitId).then((message) => {
-                                ServerTrigger.destroyChat(clientId, visitId, message, io);
-                                ServerTrigger.clientDisconnect(clientId, client.siteId, io);
-                                if (typeof visitId === 'number') {
-                                    ServerTrigger.clientDisconnectChat(visitId, io);
-                                }
-                            });
-                        } else {
+        if (client.count === 1 && client.visitId) {
+            Client.disconnects[clientId] = setTimeout(() => {
+                Client.remove(clientId, io).then((visitId) => {
+                    if (typeof visitId === 'number') {
+                        MessageModel.addWelcomeMessage('chatEndedByClient', visitId).then((message) => {
+                            ServerTrigger.destroyChat(clientId, visitId, message, io);
                             ServerTrigger.clientDisconnect(clientId, client.siteId, io);
-                        }
-                    });
-                }
+                            if (typeof visitId === 'number') {
+                                ServerTrigger.clientDisconnectChat(visitId, io);
+                            }
+                        });
+                    } else {
+                        ServerTrigger.clientDisconnect(clientId, client.siteId, io);
+                    }
+                });
                 Client.removeDisconnectClient(clientId);
             }, Client.reconnectTime);
         } else {
             Client.remove(clientId, io);
+            if(client.count === 1) {
+                ServerTrigger.clientDisconnect(clientId, client.siteId, io);
+            }
         }
     }
 };
@@ -125,6 +125,7 @@ SocketListener.prototype.destroyChat = function (clientId, siteId, socket, io) {
                     // this.reconnectClient(clientId, siteId, socket, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     ServerTrigger.clientDisconnectChat(visitId, io);
+                    Server.getSiteRoom(siteId, io).emit('newClient', client);
                 });
             });
         }
@@ -143,7 +144,7 @@ SocketListener.prototype.rateChat = async function (clientId, value, socket, io)
         VisitModel.getLastVisitIdFromClientId(clientId).then((visitId) => {
             if (visitId) {
                 VisitModel.rateChat(visitId, value).then((rated) => {
-                    Trigger.rateChat(socket);
+                    Client.getClientRoom(clientId, io).emit('chatRated');
                 });
             }
         });

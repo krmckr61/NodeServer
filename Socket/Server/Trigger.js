@@ -160,7 +160,7 @@ Trigger.prototype.setHistory = function (rows, socket) {
 Trigger.prototype.userConnect = function (id, io) {
     UserModel.getUser(id).then((user) => {
         if (user) {
-            io.sockets.emit('newUser', user);
+            Server.getSiteRoom(Server.getSiteId(id), io).emit('newUser', user);
         }
     });
 };
