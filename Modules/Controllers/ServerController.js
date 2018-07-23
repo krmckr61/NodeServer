@@ -96,10 +96,6 @@ ServerController.getRoleRoom = function (roleId, io) {
     return io.to(this.roleRoomNamePrefix + roleId);
 };
 
-ServerController.getSiteRoom = function(siteId, io) {
-    return io.to('user' + siteId);
-};
-
 ServerController.has = function (id) {
     if (this.users[id]) {
         return true;

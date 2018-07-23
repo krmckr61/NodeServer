@@ -23,7 +23,7 @@ Trigger.prototype.initClient = function (client, io) {
     this.setWriters(client, io);
 
     if (!client.reconnect) {
-        io.to('user' + client.siteId).emit('newClient', client);
+        io.sockets.emit('newClient', client);
     }
 };
 
@@ -80,11 +80,11 @@ Trigger.prototype.newUser = function (clientId, users, io) {
 };
 
 Trigger.prototype.throwClientError = function (id, message, io) {
-    Client.getClientRoom(id, io).emit('clientError', message);
+    io.to(id).emit('clientError', message);
 };
 
-Trigger.prototype.rateChat = function (clientId, io) {
-    Client.getClientRoom(clientId, io).emit('chatRated');
+Trigger.prototype.rateChat = function (socket) {
+    socket.emit('chatRated');
 };
 
 Trigger.prototype.joinVisitRoom = function (id, io) {
