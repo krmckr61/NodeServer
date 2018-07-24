@@ -1,6 +1,7 @@
 let db = require('../../Core/Database');
 let msg = require('./Message');
 let Helper = require('../../Helpers/Helper');
+let VisitModel = require('./Visit');
 
 let Client = function () {
 
@@ -9,23 +10,30 @@ let Client = function () {
 Client.prototype.getStatus = async function (id) {
     return new Promise((resolve) => {
         db.query({
-            text: "SELECT id FROM visit where visitorid=$1 AND active='1' AND status='1' LIMIT 1",
+            text: "SELECT id, data FROM visit where visitorid=$1 AND active='1' AND status='1' LIMIT 1",
             values: [id]
         }, (err, response) => {
             if (!err) {
+                let data = {status: 0};
                 if (response.rows.length > 0) {
-                    this.hasOperator(response.rows[0].id).then((res) => {
-                        if (res) {
-                            resolve(2);
-                        } else {
-                            resolve(1);
-                        }
+                    data = {status: 1, visitId: response.rows[0].id};
+                    VisitModel.getUsersFromVisit(response.rows[0].id).then((users) => {
+                        VisitModel.getDataFromId((data.visitId)).then((data) => {
+                            if (users) {
+                                data.status = 2;
+                                data.users = users;
+                            }
+                            if (data) {
+                                data.data = data;
+                            }
+                            resolve(data);
+                        });
                     });
                 } else {
-                    resolve(0);
+                    resolve(data);
                 }
             } else {
-                resolve(0);
+                resolve(data);
             }
         });
     });

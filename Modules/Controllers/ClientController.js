@@ -13,102 +13,67 @@ let ClientController = {
     reconnectTime: 2000
 };
 
-ClientController.add = async function (id, siteId, socket, count = 1) {
+
+ClientController.add = async function (clientId, siteId, socket) {
     return new Promise((resolve) => {
-        if (this.has(id)) {
-            if (this.hasDisconnectClient(id) && this.clients[id].count === 1) {
-                console.log('a client reloaded : - ip : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
-                this.removeDisconnectClient(id);
-                if (this.clients[id].visitId) {
-                    this.clients[id].reconnect = true;
-                }
-                ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
-                    if (isBanned) {
-                        this.clients[id].data.banned = true;
-                    } else {
-                        this.clients[id].data.banned = false;
-                    }
-                    resolve(this.get(id));
-                });
-            } else {
-                this.clients[id]['count'] += 1;
-                ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
-                    if (isBanned) {
-                        this.clients[id].data.banned = true;
-                    } else {
-                        this.clients[id].data.banned = false;
-                    }
-                    console.log('a client connected from another tab : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
-                    resolve(this.get(id));
-                });
-            }
+        if (this.has(clientId)) {
+            //the client has already connected
+            resolve(this.editClient(this.clients[clientId]));
         } else {
-            ClientModel.getStatus(id).then((status) => {
-                ClientInfo.getInfo(socket).then((data) => {
-                    ClientModel.hasBanned(id, data.ipAddress).then((isBanned) => {
-                        if (isBanned) {
-                            data.banned = true;
-                        } else {
-                            data.banned = false;
-                        }
-                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + ' - site : ' + siteId + " - status : " + status + " - count : " + 1);
-                        VisitModel.getVisitIdFromClientId(id).then((visitId) => {
-                            if (visitId) {
-                                VisitModel.getDataFromId(visitId).then((visitData) => {
-                                    if (visitData) {
-                                        data = Object.assign(data, visitData);
-                                    }
-                                    VisitModel.getUsersFromVisit(visitId).then((users) => {
-                                        if (users.length > 0) {
-                                            this.clients[id] = {
-                                                id: id,
-                                                status: status,
-                                                count: count,
-                                                data: data,
-                                                visitId: visitId,
-                                                users: users,
-                                                siteId: siteId,
-                                                writer: {}
-                                            };
-                                            resolve(this.get(id));
-                                        } else {
-                                            this.clients[id] = {
-                                                id: id,
-                                                status: status,
-                                                count: count,
-                                                data: data,
-                                                visitId: visitId,
-                                                users: [],
-                                                siteId: siteId,
-                                                writer: {}
-                                            };
-                                        }
-                                    });
-                                });
-                            } else {
-                                this.clients[id] = {
-                                    id: id,
-                                    status: status,
-                                    count: count,
-                                    data: data,
-                                    users: [],
-                                    siteId: siteId,
-                                    writer: {}
-                                };
-                                resolve(this.get(id));
-                            }
-                        });
-                    });
-                });
-            });
+            //new client connected
+            resolve(this.createClient(clientId, siteId, socket));
         }
+    });
+};
+
+ClientController.editClient = async function (client) {
+    return new Promise((resolve) => {
+        if (this.hasDisconnectClient(client.id)) {
+            //the client has disconnected in two seconds
+            console.log('a client reloaded : ' + client.id + ' - siteId : ' + client.siteId);
+            this.removeDisconnectClient(client.id);
+            if (client.visitId) {
+                client.reconnect = true;
+            }
+            resolve(client);
+        } else {
+            //the client connected from another tab
+            client.count++;
+            console.log('a client connected from another tab : ' + client.id + ' - siteId : ' + client.siteId + ' - count : ' + client.count);
+            resolve(client);
+        }
+    });
+};
+
+ClientController.createClient = async function (clientId, siteId, socket) {
+    return new Promise((resolve) => {
+        console.log('a client connected : ' + clientId + ' - siteId : ' + siteId);
+        //create client with pre infos
+        this.addClientWithPreInfo(clientId, siteId, socket);
+        //set client infos
+        resolve(this.setClientEntranceDatas(this.clients[clientId]));
+    });
+};
+
+ClientController.addClientWithPreInfo = function (id, siteId, socket, count = 1) {
+    this.clients[id] = {id: id, siteId: siteId, count: count, data: ClientInfo.getPreInfo(socket), writer: {}};
+};
+
+ClientController.setClientEntranceDatas = async function (client) {
+    return new Promise((resolve) => {
+        ClientInfo.getClientProperties(client.id, client.siteId, client.data['ipAddress']).then((properties) => {
+            client.data.location = properties.location;
+            client.data.banned = properties.banned;
+            client = Object.assign(client, properties.status);
+            resolve(client);
+        });
     });
 };
 
 ClientController.initClientRooms = async function (client, socket) {
     return new Promise((resolve) => {
         socket.join(this.clientRoomNamePrefix + client.id);
-        if (client.status != 0) {
+        if (client.status !== 0) {
             ClientModel.getVisitId(client.id).then((visitId) => {
                 Visit.joinVisitRoom(visitId, socket);
                 resolve(true);
@@ -126,17 +91,13 @@ ClientController.getClientRoom = function (clientId, io) {
 ClientController.takeClient = async function (clientId, userId, socket, io) {
     return new Promise((resolve) => {
         ClientModel.hasOperator(clientId).then((hasOperator) => {
-            if (!hasOperator && (typeof this.clients[clientId].taken === 'undefined')) {
-                this.clients[clientId].taken = true;
+            if (!hasOperator) {
                 ClientModel.getVisitId(clientId).then((visitId) => {
                     if (visitId) {
                         if (this.get(clientId)) {
                             this.clients[clientId].visitId = visitId;
                             ClientModel.addOperator(visitId, userId).then((add) => {
                                 if (add) {
-                                    setTimeout(() => {
-                                        delete this.clients[clientId].taken
-                                    }, 500);
                                     Visit.joinVisitRoom(visitId, socket);
                                     this.setStatus(clientId, 2);
                                     MessageModel.addWelcomeMessage('clientTaken', visitId).then((welcomeMessage) => {
@@ -230,7 +191,7 @@ ClientController.remove = async function (clientId, io) {
             if (this.clients[clientId]['count'] === 1) {
                 ClientModel.getStatus(clientId).then((status) => {
                     delete this.clients[clientId];
-                    if (status !== 0) {
+                    if (status.status !== 0) {
                         ClientModel.getVisitId(clientId).then((visitId) => {
                             ClientModel.logout(visitId).then((response) => {
                                 resolve(visitId);
@@ -333,11 +294,100 @@ ClientController.destroyChat = function (clientId) {
 };
 
 ClientController.getSiteId = function (clientId) {
-    if (this.has(clientId)) {
+    if(this.has(clientId)) {
         return this.clients[clientId].siteId;
     } else {
         return false;
     }
+};
+
+ClientController.addOld = async function (id, siteId, socket, count = 1) {
+    return new Promise((resolve) => {
+        if (this.has(id)) {
+            if (this.hasDisconnectClient(id) && this.clients[id].count === 1) {
+                console.log('a client reloaded : - ip : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
+                this.removeDisconnectClient(id);
+                if (this.clients[id].visitId) {
+                    this.clients[id].reconnect = true;
+                }
+                ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
+                    if (isBanned) {
+                        this.clients[id].data.banned = true;
+                    } else {
+                        this.clients[id].data.banned = false;
+                    }
+                    resolve(this.get(id));
+                });
+            } else {
+                this.clients[id]['count'] += 1;
+                ClientModel.hasBanned(id, this.get(id).data.ipAddress).then((isBanned) => {
+                    if (isBanned) {
+                        this.clients[id].data.banned = true;
+                    } else {
+                        this.clients[id].data.banned = false;
+                    }
+                    console.log('a client connected from another tab : ' + this.clients[id].data.ipAddress + ' - browser : ' + this.clients[id].data.device.browser + ' - os : ' + this.clients[id].data.device.os + ' - site : ' + siteId + ' - count : ' + this.clients[id].count);
+                    resolve(this.get(id));
+                });
+            }
+        } else {
+            ClientModel.getStatus(id).then((status) => {
+                ClientInfo.getInfo(socket).then((data) => {
+                    ClientModel.hasBanned(id, data.ipAddress).then((isBanned) => {
+                        if (isBanned) {
+                            data.banned = true;
+                        } else {
+                            data.banned = false;
+                        }
+                        console.log('a client connected - ip : ' + data.ipAddress + ' - browser : ' + data.device.browser + ' - os : ' + data.device.os + ' - site : ' + siteId + " - status : " + status + " - count : " + 1);
+                        VisitModel.getVisitIdFromClientId(id).then((visitId) => {
+                            if (visitId) {
+                                VisitModel.getDataFromId(visitId).then((visitData) => {
+                                    if (visitData) {
+                                        data = Object.assign(data, visitData);
+                                    }
+                                    VisitModel.getUsersFromVisit(visitId).then((users) => {
+                                        if (users.length > 0) {
+                                            this.clients[id] = {
+                                                id: id,
+                                                status: status,
+                                                count: count,
+                                                data: data,
+                                                visitId: visitId,
+                                                users: users,
+                                                siteId: siteId
+                                            };
+                                            resolve(this.get(id));
+                                        } else {
+                                            this.clients[id] = {
+                                                id: id,
+                                                status: status,
+                                                count: count,
+                                                data: data,
+                                                visitId: visitId,
+                                                users: [],
+                                                siteId: siteId
+                                            };
+                                        }
+                                    });
+                                });
+                            } else {
+                                this.clients[id] = {
+                                    id: id,
+                                    status: status,
+                                    count: count,
+                                    data: data,
+                                    users: [],
+                                    siteId: siteId
+                                };
+                                resolve(this.get(id));
+                            }
+                        });
+                    });
+                });
+            });
+        }
+    });
 };
 
 ClientController.addWriter = async function (visitId, userId) {

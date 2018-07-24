@@ -11,8 +11,8 @@ let SubjectModel = require('../../Modules/Model/Subject');
 SocketListener = function () {
 };
 
-SocketListener.prototype.connection = function (id, siteId, socket, io, reconnect = false, count = 1) {
-    Client.add(id, siteId, socket, count).then((client) => {
+SocketListener.prototype.connection = function (id, siteId, socket, io, reconnect = false) {
+    Client.add(id, siteId, socket).then((client) => {
         Client.initClientRooms(client, socket).then((res) => {
             if (!reconnect) {
                 Trigger.initClient(client, io);
