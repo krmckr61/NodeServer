@@ -74,29 +74,33 @@ SocketListener.prototype.setClientLoginProperties = function (id, cl, data, sock
 SocketListener.prototype.disconnect = function (clientId, socket, io) {
     let client = Client.get(clientId);
     if (client) {
-        if (client.count === 1 && client.visitId) {
-            Client.addDisconnectClient(clientId);
-            setTimeout(() => {
-                if (Client.hasDisconnectClient(clientId)) {
-                    Client.remove(clientId, io).then((visitId) => {
-                        if (typeof visitId === 'number') {
-                            MessageModel.addWelcomeMessage('chatEndedByClient', visitId).then((message) => {
-                                ServerTrigger.destroyChat(clientId, visitId, message, io);
+        if (client.count === 1) {
+            if(client.visitId) {
+                Client.addDisconnectClient(clientId);
+                setTimeout(() => {
+                    if (Client.hasDisconnectClient(clientId)) {
+                        Client.remove(clientId, io).then((visitId) => {
+                            if (typeof visitId === 'number') {
+                                MessageModel.addWelcomeMessage('chatEndedByClient', visitId).then((message) => {
+                                    ServerTrigger.destroyChat(clientId, visitId, message, io);
+                                    ServerTrigger.clientDisconnect(clientId, client.siteId, io);
+                                    if (typeof visitId === 'number') {
+                                        ServerTrigger.clientDisconnectChat(visitId, io);
+                                    }
+                                });
+                            } else {
                                 ServerTrigger.clientDisconnect(clientId, client.siteId, io);
-                                if (typeof visitId === 'number') {
-                                    ServerTrigger.clientDisconnectChat(visitId, io);
-                                }
-                            });
-                        } else {
-                            ServerTrigger.clientDisconnect(clientId, client.siteId, io);
-                        }
-                    });
-                }
-                Client.removeDisconnectClient(clientId);
-            }, Client.reconnectTime);
+                            }
+                        });
+                    }
+                    Client.removeDisconnectClient(clientId);
+                }, Client.reconnectTime);
+            } else {
+                Client.remove(clientId, io);
+                ServerTrigger.clientDisconnect(clientId, client.siteId, io);
+            }
         } else {
             Client.remove(clientId, io);
-            ServerTrigger.clientDisconnect(clientId, client.siteId, io);
         }
     }
 };
