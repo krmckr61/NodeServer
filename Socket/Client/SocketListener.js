@@ -74,7 +74,7 @@ SocketListener.prototype.setClientLoginProperties = function (id, cl, data, sock
 SocketListener.prototype.disconnect = function (clientId, socket, io) {
     let client = Client.get(clientId);
     if (client) {
-        if (client.count === 1) {
+        if (client.count === 1 && client.visitId) {
             Client.addDisconnectClient(clientId);
             setTimeout(() => {
                 if (Client.hasDisconnectClient(clientId)) {
@@ -96,6 +96,7 @@ SocketListener.prototype.disconnect = function (clientId, socket, io) {
             }, Client.reconnectTime);
         } else {
             Client.remove(clientId, io);
+            ServerTrigger.clientDisconnect(clientId, client.siteId, io);
         }
     }
 };
@@ -122,9 +123,9 @@ SocketListener.prototype.destroyChat = function (clientId, siteId, socket, io) {
                     Client.destroyChat(clientId);
                     ServerTrigger.destroyChat(clientId, visitId, message, io);
                     ServerTrigger.clientDisconnect(clientId, client.siteId, io);
-                    // this.reconnectClient(clientId, siteId, socket, io);
                     Visit.autoTakeClients(Server.getAll(), io);
                     ServerTrigger.clientDisconnectChat(visitId, io);
+                    io.sockets.emit('newClient', client);
                 });
             });
         }

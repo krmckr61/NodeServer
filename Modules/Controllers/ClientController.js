@@ -290,6 +290,7 @@ ClientController.destroyChat = function (clientId) {
         this.clients[clientId].disconnect = true;
         this.clients[clientId].status = 0;
         this.clients[clientId].users = [];
+        delete this.clients[clientId].visitId;
     }
 };
 
@@ -394,7 +395,6 @@ ClientController.addWriter = async function (visitId, userId) {
     return new Promise((resolve) => {
         ClientModel.getClientIdFromVisitId(visitId).then((clientId) => {
             if (this.has(clientId) && typeof this.clients[clientId].writer[userId] === 'undefined') {
-                console.log(111);
                 UserModel.getName(userId).then((name) => {
                     this.clients[clientId].writer[userId] = name;
                     resolve(this.clients[clientId].writer);

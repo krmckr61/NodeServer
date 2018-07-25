@@ -18,13 +18,13 @@ Client.prototype.getStatus = async function (id) {
                 if (response.rows.length > 0) {
                     data = {status: 1, visitId: response.rows[0].id};
                     VisitModel.getUsersFromVisit(response.rows[0].id).then((users) => {
-                        VisitModel.getDataFromId((data.visitId)).then((data) => {
+                        VisitModel.getDataFromId((data.visitId)).then((visitData) => {
                             if (users) {
                                 data.status = 2;
                                 data.users = users;
                             }
                             if (data) {
-                                data.data = data;
+                                data.data = visitData;
                             }
                             resolve(data);
                         });
